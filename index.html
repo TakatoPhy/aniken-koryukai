@@ -351,30 +351,69 @@
 
     /* ====== SCHEDULE ====== */
     .section-schedule{padding:80px 0 100px}
-    .tl{max-width:560px;margin:0 auto}
+    .tl{max-width:520px;margin:0 auto;position:relative;padding-left:32px}
+    .tl::before{
+      content:"";position:absolute;top:8px;left:9px;
+      width:3px;bottom:8px;
+      background:linear-gradient(to bottom, #ddd 0%, #ff89ea 30%, #e489ff 70%, #9ce0ff 100%);
+      border-radius:2px;
+    }
     .tl-item{
-      display:flex;gap:20px;align-items:baseline;
-      padding:14px 0;
-      border-bottom:1px solid rgba(0,0,0,0.06);
+      position:relative;
+      padding:0 0 36px;
       font-size:15px;line-height:1.4;
     }
-    .tl-date{
-      flex-shrink:0;width:120px;
-      font-size:14px;letter-spacing:0.05em;
+    .tl-item:last-child{padding-bottom:0}
+    .tl-item::before{
+      content:"";position:absolute;
+      left:-32px;top:2px;
+      width:21px;height:21px;
+      border-radius:50%;
+      background:#fff;
+      border:3px solid #e489ff;
+      z-index:1;
     }
-    .tl-item.done{color:#bbb;text-decoration:line-through}
-
+    .tl-item.done::before{
+      background:#ddd;border-color:#ddd;
+      width:15px;height:15px;
+      left:-29px;top:4px;
+    }
+    .tl-item.active::before{
+      background:#ff89ea;border-color:#ff89ea;
+      box-shadow:0 0 0 6px rgba(255,137,234,0.2);
+      animation:pulse 2s ease-in-out infinite;
+    }
+    .tl-item.highlight::before{
+      background:linear-gradient(135deg, #ff89ea, #e489ff);
+      border-color:#e489ff;
+      width:25px;height:25px;
+      left:-34px;top:0;
+    }
+    @keyframes pulse{
+      0%,100%{box-shadow:0 0 0 6px rgba(255,137,234,0.2)}
+      50%{box-shadow:0 0 0 12px rgba(255,137,234,0.08)}
+    }
+    .tl-date{
+      font-size:13px;letter-spacing:0.04em;
+      color:#999;
+    }
+    .tl-label{
+      display:block;margin-top:4px;
+      font-size:16px;font-weight:700;
+    }
+    .tl-item.done .tl-label{color:#bbb;font-weight:500;text-decoration:line-through}
+    .tl-item.active .tl-label{color:#333}
+    .tl-item.highlight .tl-label{
+      font-size:18px;font-weight:900;color:#e489ff;
+    }
     .tl-badge{
       display:inline-block;
-      font-size:11px;font-weight:900;
+      font-size:10px;font-weight:900;
       padding:2px 8px;border-radius:4px;
-      vertical-align:middle;margin-left:4px;
+      vertical-align:middle;margin-left:6px;
     }
     .tl-badge-end{background:#eee;color:#999}
     .tl-badge-now{background:#ff89ea;color:#fff}
-
-    .tl-item.highlight .tl-date{color:#e489ff;font-weight:900}
-    .tl-item.highlight .tl-label{font-weight:900}
 
     /* ====== CTA ====== */
     .cta-section{
@@ -563,7 +602,7 @@
   <div class="fv-star s3"><svg><use href="#icon-star"/></svg></div>
 
   <div class="fv-content">
-    <h1 class="fv-title">大学アニ研<br><span class="accent">交流会</span></h1>
+    <h1 class="fv-title">第一回<br>大学アニ研<span class="accent">交流会</span></h1>
     <div class="fv-date font-bg">2026.3.29<span class="week">(SUN)</span></div>
     <p class="fv-sub">作品の裏側を共有しよう。<br>大学アニ研同士の、新しい交流の場。</p>
     <div class="common-button entry-button pop-anim"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR92XCTTV27hKu4xeZqKY7f3uZ5LFOnAbdTz2ewlhR8DF7tA/viewform?usp=dialog" target="_blank" rel="noopener">
@@ -665,11 +704,26 @@
   </div>
   <div class="section-contents">
     <div class="tl">
-      <div class="tl-item done anim"><span class="tl-date font-bg">— 1/18</span><span class="tl-label">事前アンケート <span class="tl-badge tl-badge-end font-bg">END</span></span></div>
-      <div class="tl-item anim"><span class="tl-date font-bg">2/1 — 2/28</span><span class="tl-label">参加申し込み <span class="tl-badge tl-badge-now font-bg">NOW</span></span></div>
-      <div class="tl-item anim"><span class="tl-date font-bg">2/7 — 3/20</span><span class="tl-label">作品・資料提出</span></div>
-      <div class="tl-item anim"><span class="tl-date font-bg">3/25</span><span class="tl-label">パンフレット配布</span></div>
-      <div class="tl-item highlight anim"><span class="tl-date font-bg">3/29</span><span class="tl-label">交流会本番</span></div>
+      <div class="tl-item done anim">
+        <span class="tl-date font-bg">— 1/18</span>
+        <span class="tl-label">事前アンケート <span class="tl-badge tl-badge-end font-bg">END</span></span>
+      </div>
+      <div class="tl-item active anim">
+        <span class="tl-date font-bg">2/1 — 2/28</span>
+        <span class="tl-label">参加申し込み <span class="tl-badge tl-badge-now font-bg">NOW</span></span>
+      </div>
+      <div class="tl-item anim">
+        <span class="tl-date font-bg">2/7 — 3/20</span>
+        <span class="tl-label">作品・資料提出</span>
+      </div>
+      <div class="tl-item anim">
+        <span class="tl-date font-bg">3/25</span>
+        <span class="tl-label">パンフレット配布</span>
+      </div>
+      <div class="tl-item highlight anim">
+        <span class="tl-date font-bg">3/29</span>
+        <span class="tl-label">交流会本番</span>
+      </div>
     </div>
   </div>
 </section>
