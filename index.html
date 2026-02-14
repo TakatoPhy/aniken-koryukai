@@ -94,6 +94,24 @@
       color:#e489ff;
       background:rgba(228,137,255,0.06);
     }
+    .menu-actions{
+      margin:12px 20px 0;padding-top:12px;
+      border-top:1px solid rgba(228,137,255,0.12);
+      display:flex;flex-direction:column;gap:8px;
+    }
+    .menu-action-btn{
+      display:block;text-align:center;
+      padding:10px 0;border-radius:8px;
+      font-size:13px;font-weight:700;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .menu-action-btn:hover{transform:scale(1.04)}
+    .menu-action-btn.primary{
+      background:#403d40;color:#fff;
+    }
+    .menu-action-btn:not(.primary){
+      background:rgba(228,137,255,0.08);color:#e489ff;
+    }
 
     /* ====== Common Button ====== */
     .common-button{
@@ -596,6 +614,10 @@
     <li class="menu-item font-bg"><a href="#anchor-sponsor" class="scroll">SPONSOR</a></li>
     <li class="menu-item font-bg"><a href="#anchor-contact" class="scroll">CONTACT</a></li>
   </ul>
+  <div class="menu-actions">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfR92XCTTV27hKu4xeZqKY7f3uZ5LFOnAbdTz2ewlhR8DF7tA/viewform?usp=dialog" target="_blank" rel="noopener" class="menu-action-btn primary">参加申し込み</a>
+    <a href="mailto:tus_douken@googlegroups.com" class="menu-action-btn">スポンサーのお問い合わせ</a>
+  </div>
 </nav>
 
 <!-- ====== FV ====== -->
