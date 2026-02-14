@@ -274,7 +274,16 @@
     }
     .event-catch .line{display:block}
     .event-catch .accent{
-      background:linear-gradient(transparent 60%, rgba(255,137,234,0.25) 60%);
+      background-image:linear-gradient(transparent 60%, rgba(255,137,234,0.3) 60%);
+      background-size:0% 100%;
+      background-repeat:no-repeat;
+      transition:background-size 2s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .event-catch.animed .accent{
+      background-size:100% 100%;
+    }
+    .event-catch .accent.a2{
+      transition-delay:0.8s;
     }
     .event-desc{
       font-size:15px;line-height:1.9;text-align:center;
@@ -476,8 +485,8 @@
   <div class="fv-content">
     <h1 class="fv-title">大学アニ研<br><span class="accent">交流会</span></h1>
     <div class="fv-date font-bg">2026.3.29<span class="week">(SUN)</span></div>
-    <p class="fv-sub">作品の裏側を共有しよう。大学アニ研同士の、新しい交流の場。</p>
-    <div class="common-button entry-button pop-anim"><a href="#">
+    <p class="fv-sub">作品の裏側を共有しよう。<br>大学アニ研同士の、新しい交流の場。</p>
+    <div class="common-button entry-button pop-anim"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR92XCTTV27hKu4xeZqKY7f3uZ5LFOnAbdTz2ewlhR8DF7tA/viewform?usp=dialog" target="_blank" rel="noopener">
       <p>参加申し込み</p>
     </a></div>
   </div>
@@ -493,7 +502,7 @@
   <div class="section-contents">
     <div class="event-catch anim">
       <span class="line">上映して終わり、じゃない。</span>
-      <span class="line"><span class="accent">プロセス</span>も<span class="accent">Tips</span>も、</span>
+      <span class="line"><span class="accent">プロセス</span>も<span class="accent a2">Tips</span>も、</span>
       <span class="line">全部シェアしよう。</span>
     </div>
     <p class="event-desc anim">大学アニメ研究会同士が垣根を越えて、<span class="hl">制作過程の工夫</span>や<span class="hl">技術的な悩み</span>、失敗談まで語り合える交流イベントです。</p>
@@ -560,7 +569,7 @@
     </ul>
 
     <div class="cta-section anim">
-      <div class="common-button pop-anim"><a href="#">
+      <div class="common-button pop-anim"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR92XCTTV27hKu4xeZqKY7f3uZ5LFOnAbdTz2ewlhR8DF7tA/viewform?usp=dialog" target="_blank" rel="noopener">
         <p>参加申し込み</p>
       </a></div>
       <p class="cta-note">受付：2/1〜2/28 / サークル代表者がまとめて登録</p>
