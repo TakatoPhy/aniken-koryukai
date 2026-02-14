@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q&A — 大学アニ研交流会</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=M+PLUS+1:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    ol,ul{list-style:none}
+    a{font-size:inherit;color:inherit;text-decoration:none}
+    body{
+      font-family:"M PLUS 1",sans-serif;font-size:15px;font-weight:500;color:#333;
+      line-height:1;overflow-x:hidden;
+      background:
+        radial-gradient(ellipse at 10% 50%, rgba(255,137,234,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 50%, rgba(156,224,255,0.08) 0%, transparent 50%),
+        #fff0f6;
+      background-attachment:fixed;
+    }
+    .font-bg{font-family:"Bungee",sans-serif;font-weight:400}
+
+    .page-header{
+      padding:40px 30px 30px;text-align:center;
+    }
+    .page-header .back{
+      display:inline-block;margin-bottom:20px;
+      padding:8px 20px;background:#333;color:#fff;
+      border-radius:8px;font-size:13px;font-weight:700;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .page-header .back:hover{transform:scale(1.08)}
+    .page-header h1{font-size:clamp(32px,6vw,48px);letter-spacing:0.08em}
+    .page-header h1::after{
+      content:"";display:block;width:120px;height:6px;margin:8px auto 0;
+      background:linear-gradient(to right, #ff89ea, #e489ff, #9ce0ff);
+      border-radius:3px;
+    }
+    .page-header .jp{
+      display:block;margin-top:8px;
+      font-size:14px;font-weight:700;color:#e489ff;
+    }
+
+    .qa-section{
+      max-width:760px;margin:0 auto;padding:0 20px 60px;
+    }
+    .qa-category{
+      margin-top:40px;
+    }
+    .qa-category h2{
+      font-size:18px;font-weight:900;
+      padding-bottom:8px;margin-bottom:16px;
+      border-bottom:3px solid #e489ff;
+    }
+    .qa-list{display:flex;flex-direction:column;gap:16px}
+    .qa-item{
+      padding:18px 20px;background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+    }
+    .qa-item .q{
+      display:flex;gap:10px;align-items:baseline;
+      font-weight:700;line-height:1.4;
+    }
+    .qa-item .q::before{
+      content:"Q";flex-shrink:0;
+      display:flex;justify-content:center;align-items:center;
+      width:26px;height:26px;
+      font-family:"Bungee",sans-serif;font-size:14px;
+      color:#fff;background:#ff89ea;border-radius:6px;
+    }
+    .qa-item .a{
+      display:flex;gap:10px;align-items:baseline;
+      margin-top:8px;font-size:14px;line-height:1.6;color:#555;
+    }
+    .qa-item .a::before{
+      content:"A";flex-shrink:0;
+      display:flex;justify-content:center;align-items:center;
+      width:26px;height:26px;
+      font-family:"Bungee",sans-serif;font-size:14px;
+      color:#fff;background:#e489ff;border-radius:6px;
+    }
+    .qa-item .a strong{color:#333}
+    .qa-item .a ul{margin-top:6px;padding-left:1.2em;list-style:disc}
+    .qa-item .a ul li{margin-bottom:4px}
+
+    .footer-bottom{
+      padding:30px 0;text-align:center;
+      background:#333;color:rgba(255,255,255,0.4);font-size:12px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="index.html" class="back">← トップに戻る</a>
+  <h1 class="font-bg">Q&A</h1>
+  <span class="jp">よくある質問（随時更新）</span>
+</div>
+
+<div class="qa-section">
+
+  <div class="qa-category">
+    <h2>参加資格・参加形態について</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">「大学アニ研」とは具体的にどのような団体を指しますか？</div>
+        <div class="a">大学のサークルのうち、当年度に１作品以上アニメーションを制作している団体が目安です。公認・非公認は問いません。ただし、サークルの活動内容を鑑み、参加をお断りする場合があります。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">院生・OB/OG・顧問・外部協力者は参加できますか？</div>
+        <div class="a">原則として<strong>現役学生のみ参加可能</strong>です。OB/OGや顧問の同伴はご遠慮ください。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">1サークルあたり参加できる人数に上限はありますか？</div>
+        <div class="a">原則ありませんが、会場キャパシティの都合上、<strong>1サークル10名程度を目安</strong>にご協力をお願いする場合があります。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">個人（サークル無所属）での参加は可能ですか？</div>
+        <div class="a">大学生でアニメ制作に携わっている方なら参加可能です。「見学」としてならば、これから制作を始めたい方でも歓迎します。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>申し込み・当日受付について</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">事前アンケートと参加申し込みは両方必須ですか？</div>
+        <div class="a">事前アンケートは必須ではありませんが、会場規模決定のためご協力をお願いします。<strong>参加申し込み（2月開始予定）は必須</strong>です。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">参加申し込み後のキャンセル／人数変更はいつまで可能ですか？</div>
+        <div class="a">申し込み期間内であればフォームから変更可能です。それ以降はDiscord等で個別にご連絡ください。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">当日の受付方法を教えてください。</div>
+        <div class="a">当日、受付にてサークル名・氏名を確認します。<strong>学生証の提示をお願いする場合がありますので必ずご持参ください。</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>日時・会場（アクセス）について</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">正式な開催日程と場所はいつ確定しますか？</div>
+        <div class="a"><strong>1月中旬</strong>を目処に確定・お知らせします。現段階では3月29日、東京理科大学 神楽坂キャンパスでの調整中です。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">会場の入館方法は？</div>
+        <div class="a">事前の参加者リストに基づき入構手続きを行います。<strong>当日は指定された集合場所にお集まりいただく形になります</strong>（遅刻時の対応は別途案内します）。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">会場内で飲食は可能ですか？</div>
+        <div class="a">可能です。ゴミは原則お持ち帰りをお願いします。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">荷物置き場・クロークはありますか？</div>
+        <div class="a">簡易的な荷物置き場は用意しますが、貴重品は必ずご自身で管理してください。紛失・盗難の責任は負いかねます。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>参加費・費用について</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">参加費はかかりますか？</div>
+        <div class="a">イベント本編への参加は無料です。終了後の懇親会に参加される方のみ、実費（2,000円程度を予定）を当日徴収させていただきます。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">領収書は発行できますか？</div>
+        <div class="a">簡易的な領収書（受領証）であれば発行可能です。必要な場合は受付時にお申し出ください。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>オンライン参加・配信について</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">オンライン参加で可能なことは何ですか？</div>
+        <div class="a">作品上映の視聴、プレゼン登壇（動画提出推奨）、Discordでのコメント・質疑応答への参加です。<strong>ブース展示の体験はできません。</strong></div>
+      </div>
+      <div class="qa-item">
+        <div class="q">オンライン参加に必要な環境は？</div>
+        <div class="a">Discordが使用できるPCまたはスマートフォンが必要です。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">アーカイブ（録画）の公開はありますか？</div>
+        <div class="a"><strong>原則行いません。</strong>ただし、記録用に運営内部で録画する場合があります。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>作品上映について</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">上映できる作品の条件は何ですか？</div>
+        <div class="a">サークルがその年度に取り組んだ成果物であれば、完成・未完成を問いません。既発表作品でもOKです。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">上映作品の尺（長さ）や本数に制限はありますか？</div>
+        <div class="a">各サークルの持ち時間は<strong>最大15分</strong>です。これを超える場合は「抜粋版」等のご用意をお願いします。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">上映作品の提出形式は？</div>
+        <div class="a">mp4形式（H.264）、Full HD（1920x1080）を推奨します。音声レベル等の詳細は後日レギュレーションを配布します。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">作品提出の方法と締切はいつですか？</div>
+        <div class="a">Google Drive経由での提出で、<strong>3月16日（日）</strong>を締切とする予定です。当日のトラブル防止のため、締切厳守でお願いします。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>権利・二次創作について</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">二次創作作品や、権利素材を含む作品の上映は可能ですか？</div>
+        <div class="a">可能です。ただし、<strong>権利処理は各サークルの責任</strong>で行ってください。オンライン配信に乗せる場合、権利的に問題のある箇所は無音にする、または配信を中断する対応をとりますので、必ず事前に申告してください。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>プレゼンテーションについて</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">プレゼンの持ち時間は何分ですか？</div>
+        <div class="a"><strong>発表15分＋質疑5分、計20分程度</strong>を想定しています。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">プレゼン資料の提出形式は？</div>
+        <div class="a">現地登壇の場合は<strong>ご自身のPC接続（HDMI）</strong>を推奨します。予備としてPDF/PowerPointデータを提出してください。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">プレゼンの録画・撮影は可能ですか？</div>
+        <div class="a">参加者による撮影は可能ですが、<strong>発表者の許可なくSNS等へアップロードすることは禁止</strong>です。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>ブース展示について</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">ブースの広さと備品は？</div>
+        <div class="a"><strong>長机1卓（180cm×45cm）＋椅子2脚</strong>を用意します。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">電源は使えますか？</div>
+        <div class="a">使用可能です。ただし容量に限りがあるため、<strong>1ブースあたり300W</strong>を目安とし、延長コードは必ず持参してください。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">ブースに常駐する必要はありますか？</div>
+        <div class="a"><strong>時間交代制で常駐</strong>いただく予定です。ご自身の担当時間以外は他の展示を見て回ることができます。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">ブースでの音出しは可能ですか？</div>
+        <div class="a">可能ですが、隣接ブースへの配慮をお願いします（PCスピーカー程度の音量、またはヘッドホン推奨）。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">冊子を頒布することは可能ですか？</div>
+        <div class="a">可能ですが条件があります。利益目的のグッズ販売はNGで、活動成果物の<strong>実費頒布</strong>に限ります。頒布を行う団体は事前・事後連絡が必須です。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qa-category">
+    <h2>問い合わせ</h2>
+    <div class="qa-list">
+      <div class="qa-item">
+        <div class="q">質問はどこに送ればよいですか？</div>
+        <div class="a">Discordサーバー内のアニ研交流会チャンネルの「目安箱」スレッド、または運営へのDMにて受け付けています。</div>
+      </div>
+      <div class="qa-item">
+        <div class="q">当日の緊急連絡先は？</div>
+        <div class="a">開催日が近づきましたら、参加確定者のみにお知らせします。</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-bottom">
+  &copy; 2026 東京理科大学 動画研究同好会
+</div>
+
+</body>
+</html>

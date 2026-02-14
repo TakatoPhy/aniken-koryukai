@@ -410,6 +410,84 @@
     }
     .qa-link a:hover{opacity:0.5}
 
+    /* ====== Q&A ====== */
+    .section-qanda{padding:80px 0 100px}
+    .qanda-list{
+      display:flex;flex-direction:column;gap:20px;
+    }
+    .qanda-item{
+      padding:20px 24px;
+      background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+    }
+    .qanda-item .question{
+      display:flex;gap:10px;align-items:baseline;
+      font-weight:700;line-height:1.4;
+    }
+    .qanda-item .question::before{
+      content:"Q";flex-shrink:0;
+      display:flex;justify-content:center;align-items:center;
+      width:28px;height:28px;
+      font-family:"Bungee",sans-serif;font-size:16px;
+      color:#fff;background:#ff89ea;border-radius:6px;
+    }
+    .qanda-item .answer{
+      display:flex;gap:10px;align-items:baseline;
+      margin-top:10px;font-size:14px;line-height:1.6;color:#555;
+    }
+    .qanda-item .answer::before{
+      content:"A";flex-shrink:0;
+      display:flex;justify-content:center;align-items:center;
+      width:28px;height:28px;
+      font-family:"Bungee",sans-serif;font-size:16px;
+      color:#fff;background:#e489ff;border-radius:6px;
+    }
+    .qa-more{text-align:center;margin-top:30px}
+    .qa-more a{
+      display:inline-block;padding:10px 28px;
+      background:#333;color:#fff;border-radius:8px;
+      font-size:14px;font-weight:700;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .qa-more a:hover{transform:scale(1.08)}
+
+    /* ====== SPONSOR ====== */
+    .section-sponsor{padding:80px 0 60px}
+    .sponsor-area{
+      text-align:center;margin-bottom:40px;
+    }
+    .sponsor-label{
+      display:inline-block;padding:6px 20px;
+      background:#333;color:#fff;border-radius:8px;
+      font-size:13px;font-weight:700;margin-bottom:20px;
+    }
+    .sponsor-list{
+      display:flex;justify-content:center;align-items:center;
+      flex-wrap:wrap;gap:30px;
+    }
+    .sponsor-item{
+      display:block;padding:16px 32px;
+      background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .sponsor-item:hover{transform:scale(1.05)}
+    .sponsor-item img{display:block;height:36px;width:auto}
+    .sponsor-recruit{
+      margin-top:32px;text-align:center;
+    }
+    .sponsor-recruit p{
+      font-size:14px;color:#555;line-height:1.6;margin-bottom:12px;
+    }
+    .sponsor-recruit a{
+      display:inline-block;padding:10px 28px;
+      background:linear-gradient(to right, #ff89ea, #e489ff);
+      color:#fff;border-radius:8px;
+      font-size:14px;font-weight:700;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .sponsor-recruit a:hover{transform:scale(1.08)}
+
     /* ====== Notice ====== */
     .notice-bar{
       text-align:center;padding:12px;
@@ -463,6 +541,8 @@
     <li class="menu-item font-bg"><a href="#anchor-contents" class="scroll">CONTENTS</a></li>
     <li class="menu-item font-bg"><a href="#anchor-info" class="scroll">INFO</a></li>
     <li class="menu-item font-bg"><a href="#anchor-schedule" class="scroll">SCHEDULE</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-qanda" class="scroll">Q&A</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-sponsor" class="scroll">SPONSOR</a></li>
     <li class="menu-item font-bg"><a href="#anchor-contact" class="scroll">CONTACT</a></li>
   </ul>
 </nav>
@@ -594,6 +674,61 @@
   </div>
 </section>
 
+<!-- ====== Q&A ====== -->
+<section id="anchor-qanda" class="section-qanda">
+  <div class="sec-title anim">
+    <div class="en font-bg">Q&A</div>
+    <span class="jp">よくある質問</span>
+  </div>
+  <div class="section-contents">
+    <div class="qanda-list">
+      <div class="qanda-item anim">
+        <div class="question">参加費はかかりますか？</div>
+        <div class="answer">イベント本編は無料です。終了後の懇親会のみ実費（2,000円程度）を徴収予定です。</div>
+      </div>
+      <div class="qanda-item anim">
+        <div class="question">個人（サークル無所属）での参加は可能ですか？</div>
+        <div class="answer">大学生でアニメ制作に携わっている方なら参加可能です。見学としてなら、これから制作を始めたい方も歓迎します。</div>
+      </div>
+      <div class="qanda-item anim">
+        <div class="question">オンライン参加で可能なことは？</div>
+        <div class="answer">作品上映の視聴、プレゼン登壇、Discordでの質疑応答に参加できます。ブース展示の体験はできません。</div>
+      </div>
+      <div class="qanda-item anim">
+        <div class="question">1サークルあたりの人数制限はありますか？</div>
+        <div class="answer">原則ありませんが、会場の都合上1サークル10名程度を目安にご協力をお願いする場合があります。</div>
+      </div>
+      <div class="qanda-item anim">
+        <div class="question">上映作品の尺に制限はありますか？</div>
+        <div class="answer">各サークルの持ち時間は最大15分です。超える場合は抜粋版等のご用意をお願いします。</div>
+      </div>
+    </div>
+    <div class="qa-more anim">
+      <a href="qa.html">すべてのQ&Aを見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SPONSOR ====== -->
+<section id="anchor-sponsor" class="section-sponsor">
+  <div class="sec-title anim">
+    <div class="en font-bg">SPONSOR</div>
+    <span class="jp">スポンサー</span>
+  </div>
+  <div class="section-contents">
+    <div class="sponsor-area anim">
+      <div class="sponsor-label font-bg">SUPPORTED BY</div>
+      <div class="sponsor-list">
+        <a href="https://tooniq.co.jp" target="_blank" rel="noopener" class="sponsor-item"><img src="https://tooniq.co.jp/images/tooniq_logo_touka_vector16.svg" alt="TOONIQ"></a>
+      </div>
+    </div>
+    <div class="sponsor-recruit anim">
+      <p>本イベントのスポンサーを募集しています。<br>ご興味のある企業・団体様はお気軽にお問い合わせください。</p>
+      <a href="mailto:tus_douken@googlegroups.com">スポンサーのお問い合わせ</a>
+    </div>
+  </div>
+</section>
+
 <!-- ====== CONTACT ====== -->
 <section id="anchor-contact" class="section-contact">
   <div class="sec-title anim">
@@ -608,9 +743,6 @@
         <a href="mailto:tus_douken@googlegroups.com">Mail</a>
         <a href="https://x.com/tus_douken" target="_blank" rel="noopener">X @tus_douken</a>
       </div>
-    </div>
-    <div class="qa-link anim">
-      <a href="https://www.notion.so/Q-A-2dc3294d5e5c80a0b84ce87dec3ef2d4" target="_blank" rel="noopener">Q&A（随時更新）→</a>
     </div>
   </div>
 </section>
