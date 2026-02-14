@@ -637,14 +637,33 @@
     .sponsor-recruit p{
       font-size:14px;color:#555;line-height:1.6;margin-bottom:12px;
     }
-    .sponsor-recruit a{
-      display:inline-block;padding:10px 28px;
-      background:linear-gradient(to right, #ff89ea, #e489ff);
-      color:#fff;border-radius:8px;
+    /* ====== Gradient outline button ====== */
+    .grad-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      position:relative;
+      padding:12px 28px;border-radius:50px;
       font-size:14px;font-weight:700;
-      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+      color:#e489ff;background:#fff;
+      border:2px solid transparent;
+      background-image:linear-gradient(#fff,#fff),linear-gradient(to right,#ff89ea,#e489ff,#9ce0ff);
+      background-origin:border-box;
+      background-clip:padding-box,border-box;
+      transition:all 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+      overflow:hidden;
     }
-    .sponsor-recruit a:hover{transform:scale(1.08)}
+    .grad-btn::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(to right,#ff89ea,#e489ff,#9ce0ff);
+      opacity:0;transition:opacity 0.3s;border-radius:50px;
+    }
+    .grad-btn:hover::before{opacity:1}
+    .grad-btn:hover{color:#fff;transform:scale(1.06)}
+    .grad-btn span{position:relative;z-index:1}
+    .grad-btn .arrow{
+      position:relative;z-index:1;
+      transition:transform 0.3s;
+    }
+    .grad-btn:hover .arrow{transform:translateX(4px)}
 
     /* ====== Notice ====== */
     .notice-bar{
@@ -1027,7 +1046,7 @@
     </div>
     <div class="sponsor-recruit anim">
       <p>本イベントのスポンサーを募集しています。<br>ご興味のある企業・団体様はお気軽にお問い合わせください。</p>
-      <a href="mailto:tus_douken@googlegroups.com">スポンサーのお問い合わせ</a>
+      <a href="mailto:tus_douken@googlegroups.com?subject=%E3%80%90%E5%A4%A7%E5%AD%A6%E3%82%A2%E3%83%8B%E7%A0%94%E4%BA%A4%E6%B5%81%E4%BC%9A%E3%80%91%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" class="grad-btn"><span>スポンサーのお問い合わせ</span><span class="arrow">→</span></a>
     </div>
   </div>
 </section>
@@ -1050,7 +1069,7 @@
     <div class="staff-recruit anim" style="margin-top:32px;text-align:center">
       <p style="font-size:15px;font-weight:900;color:#333;margin-bottom:8px">運営スタッフ募集</p>
       <p style="font-size:14px;color:#555;line-height:1.6;margin-bottom:12px">一緒にイベントを作りませんか？<br>運営に興味のある団体・個人を募集しています。</p>
-      <a href="mailto:tus_douken@googlegroups.com?subject=%E3%80%90%E5%A4%A7%E5%AD%A6%E3%82%A2%E3%83%8B%E7%A0%94%E4%BA%A4%E6%B5%81%E4%BC%9A%E3%80%91%E9%81%8B%E5%96%B6%E3%82%B9%E3%82%BF%E3%83%83%E3%83%95%E5%BF%9C%E5%8B%9F" style="display:inline-block;padding:10px 28px;background:linear-gradient(to right,#ff89ea,#e489ff);color:#fff;border-radius:8px;font-size:14px;font-weight:700;transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67)" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">運営に参加する</a>
+      <a href="mailto:tus_douken@googlegroups.com?subject=%E3%80%90%E5%A4%A7%E5%AD%A6%E3%82%A2%E3%83%8B%E7%A0%94%E4%BA%A4%E6%B5%81%E4%BC%9A%E3%80%91%E9%81%8B%E5%96%B6%E3%82%B9%E3%82%BF%E3%83%83%E3%83%95%E5%BF%9C%E5%8B%9F" class="grad-btn"><span>運営に参加する</span><span class="arrow">→</span></a>
     </div>
   </div>
 </section>
