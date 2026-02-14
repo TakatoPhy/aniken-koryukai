@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プレゼン一覧 — 大学アニ研交流会</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=M+PLUS+1:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    ol,ul{list-style:none}
+    a{font-size:inherit;color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:auto}
+    body{
+      font-family:"M PLUS 1",sans-serif;font-size:15px;font-weight:500;color:#333;
+      line-height:1;overflow-x:hidden;
+      background:
+        radial-gradient(ellipse at 10% 50%, rgba(255,137,234,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 50%, rgba(156,224,255,0.08) 0%, transparent 50%),
+        #fff0f6;
+      background-attachment:fixed;
+    }
+    .font-bg{font-family:"Bungee",sans-serif;font-weight:400}
+
+    .page-header{
+      padding:40px 30px 30px;text-align:center;
+    }
+    .page-header .back{
+      display:inline-block;margin-bottom:20px;
+      padding:8px 20px;background:#333;color:#fff;
+      border-radius:8px;font-size:13px;font-weight:700;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .page-header .back:hover{transform:scale(1.08)}
+    .page-header h1{font-size:clamp(32px,6vw,48px);letter-spacing:0.08em}
+    .page-header h1::after{
+      content:"";display:block;width:120px;height:6px;margin:8px auto 0;
+      background:linear-gradient(to right, #ff89ea, #e489ff, #9ce0ff);
+      border-radius:3px;
+    }
+    .page-header .jp{
+      display:block;margin-top:8px;
+      font-size:14px;font-weight:700;color:#e489ff;
+    }
+
+    .pres-section{
+      max-width:760px;margin:0 auto;padding:0 20px 60px;
+    }
+    .pres-list{display:flex;flex-direction:column;gap:24px;margin-top:30px}
+    .pres-card{
+      display:flex;gap:24px;
+      padding:24px;background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+    }
+    .pres-speaker{
+      width:160px;flex-shrink:0;text-align:center;
+    }
+    .pres-avatar{
+      width:80px;height:80px;
+      border-radius:50%;object-fit:cover;
+      background:#f0e8f0;
+      margin:0 auto 8px;
+    }
+    .pres-speaker .name{font-size:14px;font-weight:900}
+    .pres-speaker .affil{font-size:11px;color:#999;margin-top:2px;line-height:1.4}
+    .pres-body{flex:1;min-width:0}
+    .pres-num{
+      display:inline-block;
+      font-size:11px;font-weight:900;letter-spacing:0.04em;
+      padding:2px 10px;border-radius:4px;
+      background:rgba(228,137,255,0.1);color:#e489ff;
+      margin-bottom:8px;
+    }
+    .pres-title{font-size:18px;font-weight:900;line-height:1.4}
+    .pres-desc{font-size:14px;color:#555;line-height:1.7;margin-top:8px}
+    .pres-bio{
+      font-size:12px;color:#999;line-height:1.6;margin-top:10px;
+      padding-top:10px;border-top:1px solid #f0e8f0;
+    }
+    @media (max-width:768px){
+      .pres-card{flex-direction:column;align-items:center;text-align:center}
+      .pres-speaker{width:auto}
+      .pres-body{text-align:left}
+    }
+
+    .footer-bottom{
+      padding:30px 0;text-align:center;
+      background:#333;color:rgba(255,255,255,0.4);font-size:12px;
+    }
+    .footer-credit{display:inline-block;margin-top:6px;font-size:11px}
+    .footer-credit a{color:rgba(255,255,255,0.5);text-decoration:underline;transition:color 0.2s}
+    .footer-credit a:hover{color:#fff}
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="index.html" class="back">← トップに戻る</a>
+  <h1 class="font-bg">PRESENTATIONS</h1>
+  <span class="jp">プレゼン一覧</span>
+</div>
+
+<div class="pres-section">
+  <div class="pres-list">
+    <div class="pres-card">
+      <div class="pres-speaker">
+        <div class="pres-avatar"></div>
+        <div class="name">発表者名</div>
+        <div class="affil">デジタルハリウッド大学 AniWay</div>
+      </div>
+      <div class="pres-body">
+        <span class="pres-num font-bg">#01</span>
+        <div class="pres-title">発表タイトル（仮）</div>
+        <div class="pres-desc">発表内容の説明が入ります。制作技術や運営ノウハウなど、アニメ制作に関するテーマを予定しています。</div>
+        <div class="pres-bio">経歴・活動紹介が入ります。</div>
+      </div>
+    </div>
+    <div class="pres-card">
+      <div class="pres-speaker">
+        <img src="pres-tus.png" alt="" class="pres-avatar">
+        <div class="name">大木 天翔</div>
+        <div class="affil">東京理科大学 動画研究同好会 / 合同会社TOONIQ</div>
+      </div>
+      <div class="pres-body">
+        <span class="pres-num font-bg">#02</span>
+        <div class="pres-title">アニメ制作工程におけるDX推進</div>
+        <div class="pres-bio">2003年千葉県生まれ。東京理科大学理学部第一部物理学科在学中。理化学研究所にて量子技術の研究に従事。2025年に合同会社TOONIQを設立し、代表社員を務める。動画研究同好会ではアニメ制作会社と連携した「アニメ☆ミツゾウ大作戦！」の企画・監督を担当。学園祭にてアニメ制作会社・画材店協賛のセル画体験企画を実施するなど、産学連携の取り組みを推進している。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  &copy; 2026 東京理科大学 動画研究同好会<br>
+  <span class="footer-credit">Site by <a href="https://tooniq.co.jp" target="_blank" rel="noopener">TOONIQ LLC</a></span>
+</div>
+
+</body>
+</html>
