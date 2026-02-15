@@ -150,25 +150,20 @@
     /* ====== Common Button ====== */
     .common-button{
       display:block;position:relative;
-      width:250px;height:70px;cursor:pointer;
-    }
-    .common-button::before{
-      content:"";position:absolute;top:-3px;left:-3px;
-      width:calc(100% + 6px);height:calc(100% + 6px);
-      background:linear-gradient(to right, #f9fc96 0%, #b1f3e8 50%, #9ce0ff 100%);
-      border-radius:1000px;pointer-events:none;
+      width:260px;height:68px;cursor:pointer;
     }
     .common-button a{
-      display:flex;justify-content:center;align-items:center;gap:5px;
+      display:flex;justify-content:center;align-items:center;gap:8px;
       position:relative;width:100%;height:100%;
-      background:#403d40;border-radius:1000px;overflow:hidden;
+      background:#333;
+      border-radius:1000px;
+      transition:opacity 0.2s ease;
     }
+    .common-button:hover a{opacity:0.7}
     .common-button a p{
-      position:relative;font-size:26px;font-weight:700;
-      color:#fff;letter-spacing:0.08em;
+      font-size:22px;font-weight:900;
+      color:#fff;letter-spacing:0.06em;
     }
-    .pop-anim{transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67)}
-    .pop-anim:hover{transform:scale(1.1)}
 
     /* ====== Section Title ====== */
     .sec-title{
@@ -203,13 +198,6 @@
       0%,100%{transform:translateY(0)}
       50%{transform:translateY(-10px)}
     }
-    @keyframes heartbeat{
-      0%{transform:scale(1)}
-      10%{transform:scale(1.12)}
-      20%{transform:scale(1)}
-      100%{transform:scale(1)}
-    }
-
     /* ====== FV ====== */
     .firstview{
       position:relative;width:100%;
@@ -248,31 +236,46 @@
 
     .fv-content{position:relative;z-index:2}
 
+    .fv-content > *{
+      opacity:0;transform:translateY(24px);
+      transition:opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fv-content.loaded > *{opacity:1;transform:translateY(0)}
+    .fv-content.loaded > :nth-child(1){transition-delay:0.1s}
+    .fv-content.loaded > :nth-child(2){transition-delay:0.35s}
+    .fv-content.loaded > :nth-child(3){transition-delay:0.55s}
+    .fv-content.loaded > :nth-child(4){transition-delay:0.7s}
+    .fv-content.loaded > :nth-child(5){transition-delay:0.9s}
+    .fv-content.loaded > :nth-child(6){transition-delay:1.0s}
+    .fv-content.loaded > :nth-child(7){transition-delay:1.1s}
+
     .fv-title{
       font-size:clamp(48px, 10vw, 80px);
       font-weight:900;line-height:1.15;
       color:#333;margin-bottom:20px;
     }
-    .fv-title .accent{color:#e489ff}
+    .fv-title .accent{
+      background:linear-gradient(135deg, #ff89ea, #e489ff);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
 
     .fv-date{
-      margin:20px 0 30px;
-      font-size:clamp(20px, 3vw, 30px);
-      letter-spacing:0.1em;
-      color:#333;
+      margin:20px 0 24px;
+      font-size:clamp(22px, 3.5vw, 34px);
+      letter-spacing:0.1em;color:#333;
     }
     .fv-date .week,.fv-date .wave{font-size:0.55em}
     .fv-date .wave{font-weight:900}
 
     .fv-sub{
-      font-size:16px;font-weight:500;
-      color:#555;line-height:1.6;
-      max-width:440px;margin:0 auto 35px;
+      font-size:clamp(16px, 2.5vw, 20px);font-weight:700;
+      color:#555;line-height:1.7;
+      max-width:480px;margin:0 auto 35px;
     }
 
     .fv .entry-button{
       margin:0 auto;
-      animation:heartbeat 2s ease-in-out infinite;
     }
     .fv-note{
       margin-top:12px;font-size:13px;color:#999;
@@ -296,6 +299,11 @@
 
     /* ====== Section shared ====== */
     section{padding:100px 0;position:relative}
+    .sec-alt{
+      background:rgba(255,255,255,0.6);
+      clip-path:polygon(0 40px, 100% 0, 100% calc(100% - 40px), 0 100%);
+      padding-top:140px;padding-bottom:140px;
+    }
     .section-contents{
       position:relative;margin:0 auto;
       padding:0 30px;max-width:860px;
@@ -319,31 +327,41 @@
     .info-item .title{margin-top:4px;font-size:15px;line-height:1.5;text-align:justify}
 
     /* ====== EVENT (About) ====== */
-    .section-event{padding:120px 0 80px}
+    .section-event{padding:140px 0 100px}
     .event-catch{
-      font-size:clamp(28px, 5vw, 42px);font-weight:900;
-      line-height:1.6;text-align:center;
-      margin-bottom:32px;
+      font-size:clamp(32px, 6vw, 56px);font-weight:900;
+      line-height:1.5;text-align:center;
+      margin-bottom:48px;letter-spacing:0.02em;
     }
-    .event-catch .line{display:block}
+    .event-catch .line{
+      display:block;
+      opacity:0;transform:translateY(20px);
+      transition:opacity 0.8s ease, transform 0.8s ease;
+    }
+    .event-catch.animed .line{opacity:1;transform:translateY(0)}
+    .event-catch.animed .line:nth-child(2){transition-delay:0.3s}
+    .event-catch.animed .line:nth-child(3){transition-delay:0.6s}
     .event-catch .accent{
-      background-image:linear-gradient(transparent 60%, rgba(255,137,234,0.3) 60%);
+      background-image:linear-gradient(transparent 55%, rgba(255,137,234,0.35) 55%);
       background-size:0% 100%;
       background-repeat:no-repeat;
-      transition:background-size 2s cubic-bezier(0.25,0.46,0.45,0.94);
+      transition:background-size 1.5s cubic-bezier(0.25,0.46,0.45,0.94) 1s;
     }
     .event-catch.animed .accent{
       background-size:100% 100%;
     }
     .event-catch .accent.a2{
-      background-image:linear-gradient(transparent 60%, rgba(156,224,255,0.35) 60%);
-      transition-delay:0.8s;
+      background-image:linear-gradient(transparent 55%, rgba(156,224,255,0.4) 55%);
+      transition-delay:1.3s;
     }
     .event-desc{
-      font-size:15px;line-height:1.9;text-align:center;
-      color:#555;max-width:520px;margin:0 auto;
+      font-size:clamp(16px, 2.5vw, 20px);line-height:2;text-align:center;
+      color:#555;max-width:760px;margin:0 auto;
     }
-    .event-desc .hl{font-weight:700;color:#333}
+    .event-desc .hl{
+      font-weight:900;color:#333;white-space:nowrap;
+      background-image:linear-gradient(transparent 65%, rgba(228,137,255,0.15) 65%);
+    }
 
     /* ====== CONTENTS ====== */
     .section-contents-area{padding:80px 0 100px}
@@ -361,6 +379,10 @@
     .contents-card-header{
       padding:24px 20px 18px;color:#fff;position:relative;
     }
+    .contents-card-icon{
+      display:inline-block;width:22px;height:22px;vertical-align:middle;margin-right:6px;
+    }
+    .contents-card-icon svg{width:100%;height:100%;fill:#fff}
     .contents-card-header.c1{background:#333}
     .contents-card-header.c2{background:#e489ff}
     .contents-card-header.c3{background:#ff89ea}
@@ -387,58 +409,61 @@
 
     /* ====== EVENT INFO ====== */
     .section-eventinfo{padding:80px 0 100px}
-    .event-list{display:flex;flex-direction:column;gap:24px;margin-top:30px}
+    .event-list{display:flex;flex-direction:column;gap:0;margin-top:30px;max-width:520px;margin-left:auto;margin-right:auto}
     .event-item{
       display:flex;
-      padding:20px 24px;
-      background:#fff;border-radius:10px;
-      filter:drop-shadow(0 0 10px #e0cfe0);
+      padding:18px 0;
+      border-bottom:1px solid rgba(228,137,255,0.15);
     }
+    .event-item:last-child{border-bottom:none}
     .event-item .name{
-      width:140px;flex-shrink:0;
-      font-size:16px;font-weight:900;
+      width:160px;flex-shrink:0;
+      font-size:15px;font-weight:900;color:#e489ff;
     }
     .event-item .detail{
-      width:calc(100% - 140px);
-      font-size:14px;line-height:1.6;
+      width:calc(100% - 160px);
+      font-size:16px;font-weight:500;line-height:1.7;
     }
 
     /* ====== SCHEDULE ====== */
     .section-schedule{padding:80px 0 100px}
-    .tl{max-width:520px;margin:0 auto;position:relative;padding-left:32px}
+    .tl-scroll{overflow-x:auto;overflow-y:visible;padding-bottom:8px}
+    .tl{
+      display:flex;position:relative;
+      padding-top:20px;
+    }
     .tl::before{
-      content:"";position:absolute;top:8px;left:9px;
-      width:3px;bottom:8px;
-      background:linear-gradient(to bottom, #ddd 0%, #ff89ea 30%, #e489ff 70%, #9ce0ff 100%);
+      content:"";position:absolute;top:20px;left:0;right:0;
+      height:3px;
+      background:#ddd;
       border-radius:2px;
-      transform:scaleY(0);transform-origin:top;
+      transform-origin:left;
       transition:transform 1.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      transform:scaleX(0);
     }
-    .tl.tl-drawn::before{transform:scaleY(1)}
+    .tl.tl-drawn::before{transform:scaleX(1)}
     .tl-item{
-      position:relative;
-      padding:0 0 36px;
-      font-size:15px;line-height:1.4;
+      position:relative;flex:1;
+      text-align:center;
+      padding:0 4px;
     }
-    .tl-item.anim{transform:translateX(-30px);opacity:0}
-    .tl-item.anim.animed{transform:translateX(0);opacity:1}
-    .tl-item:last-child{padding-bottom:0}
+    .tl-item.anim{transform:translateY(20px);opacity:0}
+    .tl-item.anim.animed{transform:translateY(0);opacity:1}
     .tl-item::before{
-      content:"";position:absolute;
-      left:-32px;top:2px;
-      width:21px;height:21px;
+      content:"";display:block;
+      width:14px;height:14px;
+      margin:-7px auto 12px;
       border-radius:50%;
       background:#fff;
       border:3px solid #e489ff;
-      z-index:1;
+      position:relative;z-index:1;
       transform:scale(0);
       transition:transform 0.4s cubic-bezier(0.08,1.32,0.75,1.67);
     }
     .tl-item.animed::before{transform:scale(1)}
     .tl-item.done::before{
       background:#ddd;border-color:#ddd;
-      width:15px;height:15px;
-      left:-29px;top:4px;
+      width:10px;height:10px;margin-top:-5px;
     }
     .tl-item.active::before{
       background:#ff89ea;border-color:#ff89ea;
@@ -449,10 +474,9 @@
       animation:pulse 2s ease-in-out 0.4s infinite;
     }
     .tl-item.highlight::before{
-      background:linear-gradient(135deg, #ff89ea, #e489ff);
+      background:#e489ff;
       border-color:#e489ff;
-      width:25px;height:25px;
-      left:-34px;top:0;
+      width:18px;height:18px;margin-top:-9px;
     }
     @keyframes pulse{
       0%,100%{box-shadow:0 0 0 6px rgba(255,137,234,0.2)}
@@ -460,59 +484,51 @@
     }
     .tl-date{
       font-size:13px;letter-spacing:0.04em;
-      color:#999;
+      color:#999;display:block;
     }
     .tl-label{
-      display:block;margin-top:4px;
-      font-size:16px;font-weight:700;
+      display:block;margin-top:6px;
+      font-size:15px;font-weight:700;
+      writing-mode:vertical-rl;text-orientation:mixed;
+      margin-left:auto;margin-right:auto;
+      line-height:1.4;
     }
     .tl-item.done .tl-label{color:#bbb;font-weight:500;text-decoration:line-through}
     .tl-item.active .tl-label{color:#333}
     .tl-item.highlight .tl-label{
-      font-size:18px;font-weight:900;color:#e489ff;
+      font-size:17px;font-weight:900;color:#e489ff;
     }
     .tl-badge{
-      display:inline-block;
-      font-size:10px;font-weight:900;
-      padding:2px 8px;border-radius:4px;
-      vertical-align:middle;margin-left:6px;
+      display:block;
+      writing-mode:horizontal-tb;
+      font-size:11px;font-weight:900;
+      padding:3px 8px;border-radius:4px;
+      margin-top:6px;
+      width:fit-content;margin-left:auto;margin-right:auto;
     }
     .tl-badge-end{background:#eee;color:#999}
     .tl-badge-now{background:#ff89ea;color:#fff}
 
     /* ====== TIMETABLE ====== */
     .section-timetable{padding:80px 0 100px}
-    .tt-list{display:flex;flex-direction:column;gap:0}
+    .tt-list{display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto}
     .tt-item{
-      display:flex;align-items:stretch;
-      background:#fff;
-      filter:drop-shadow(0 0 6px #e0cfe0);
+      display:flex;
+      padding:18px 0;
+      border-bottom:1px solid rgba(228,137,255,0.15);
     }
-    .tt-item:first-child{border-radius:10px 10px 0 0}
-    .tt-item:last-child{border-radius:0 0 10px 10px}
-    .tt-item+.tt-item{border-top:1px solid #f0e8f0}
+    .tt-item:last-child{border-bottom:none}
     .tt-time{
-      width:140px;flex-shrink:0;
-      padding:18px 16px;
-      font-size:14px;font-weight:700;letter-spacing:0.02em;
-      color:#999;
-      display:flex;align-items:center;
+      width:160px;flex-shrink:0;
+      font-size:15px;font-weight:900;color:#e489ff;
     }
-    .tt-bar{
-      width:4px;flex-shrink:0;
-    }
-    .tt-bar.b1{background:linear-gradient(to bottom,#ff89ea,#e489ff)}
-    .tt-bar.b2{background:#ddd}
-    .tt-bar.b3{background:linear-gradient(to bottom,#e489ff,#9ce0ff)}
-    .tt-bar.b4{background:linear-gradient(to bottom,#9ce0ff,#b1f3e8)}
-    .tt-bar.b5{background:linear-gradient(to bottom,#b1f3e8,#f9fc96)}
-    .tt-body{
-      flex:1;padding:18px 20px;
-    }
+    .tt-body{flex:1}
     .tt-name{font-size:16px;font-weight:900}
-    .tt-desc{font-size:13px;color:#777;margin-top:4px;line-height:1.5}
+    .tt-break .tt-name{color:#bbb}
+    .tt-desc{font-size:14px;color:#666;margin-top:4px;line-height:1.6}
+    .tt-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
     .tt-tag{
-      display:inline-block;margin-top:6px;
+      display:inline-block;
       font-size:11px;font-weight:700;
       padding:2px 10px;border-radius:4px;
       background:rgba(228,137,255,0.1);color:#e489ff;
@@ -532,9 +548,8 @@
     .access-map iframe{display:block;width:100%;height:300px;border:none}
     .access-detail{
       flex:1;min-width:240px;
-      padding:24px;background:#fff;border-radius:10px;
-      filter:drop-shadow(0 0 10px #e0cfe0);
-      font-size:14px;line-height:1.8;color:#555;
+      padding:24px 0;
+      font-size:15px;line-height:1.8;color:#555;
     }
     .access-detail strong{color:#333;font-weight:900}
     .access-detail .station{
@@ -617,22 +632,28 @@
       font-weight:700;line-height:1.4;
     }
     .qanda-item .question::before{
-      content:"Q";position:absolute;left:0;top:0;
+      content:"Q";position:absolute;left:0;top:-2px;
       display:flex;justify-content:center;align-items:center;
-      width:28px;height:28px;
-      font-family:"Bungee",sans-serif;font-size:16px;
-      color:#fff;background:#ff89ea;border-radius:6px;
+      width:30px;height:30px;
+      font-family:"Bungee",sans-serif;font-size:15px;
+      color:#fff;
+      background:linear-gradient(135deg, #ff89ea, #e489ff);
+      border-radius:50%;
+      box-shadow:0 2px 8px rgba(255,137,234,0.3);
     }
     .qanda-item .answer{
       position:relative;padding-left:38px;
-      margin-top:10px;font-size:14px;line-height:1.6;color:#555;
+      margin-top:16px;font-size:14px;line-height:1.6;color:#555;
     }
     .qanda-item .answer::before{
-      content:"A";position:absolute;left:0;top:0;
+      content:"A";position:absolute;left:0;top:-2px;
       display:flex;justify-content:center;align-items:center;
-      width:28px;height:28px;
-      font-family:"Bungee",sans-serif;font-size:16px;
-      color:#fff;background:#e489ff;border-radius:6px;
+      width:30px;height:30px;
+      font-family:"Bungee",sans-serif;font-size:15px;
+      color:#e489ff;
+      background:#fff;
+      border:2px solid #e489ff;
+      border-radius:50%;
     }
     .qa-more{text-align:center;margin-top:30px}
 
@@ -736,11 +757,12 @@
       .sec-title .en{font-size:clamp(24px, 5vw, 32px)}
       section{padding:60px 0}
       .section-contents{padding:0 5%}
-      .common-button{width:200px;height:56px}
-      .common-button a p{font-size:20px}
+      .common-button{width:220px;height:56px}
+      .common-button a p{font-size:18px}
       .event-text.emphasis{font-size:18px}
       .fv-deco.d1,.fv-deco.d2,.fv-deco.d4,.fv-deco.d8{display:none}
-      .tt-time{width:100px;font-size:12px;padding:14px 10px}
+      .tt-item{flex-direction:column;gap:8px}
+      .tt-time{width:100%}
       .access-info{flex-direction:column}
       .circle-card{width:calc(50% - 8px);min-width:0}
       .circle-card .circle-logo{width:100%;max-width:200px;height:auto;aspect-ratio:1}
@@ -815,7 +837,7 @@
     <div class="fv-date font-bg">2026.3.29<span class="week">(SUN)</span></div>
     <p style="display:inline-block;margin:12px 0 0;padding:4px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:0.04em;color:#e489ff;background:rgba(228,137,255,0.08)">現地・オンライン同時開催</p>
     <p class="fv-sub">作品の裏側を共有しよう。<br>大学アニ研同士の、新しい交流の場。</p>
-    <div class="common-button entry-button pop-anim"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR92XCTTV27hKu4xeZqKY7f3uZ5LFOnAbdTz2ewlhR8DF7tA/viewform?usp=dialog" target="_blank" rel="noopener">
+    <div class="common-button entry-button"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR92XCTTV27hKu4xeZqKY7f3uZ5LFOnAbdTz2ewlhR8DF7tA/viewform?usp=dialog" target="_blank" rel="noopener">
       <p>参加申し込み</p>
     </a></div>
     <p class="fv-note">※サークル単位での申し込みのみこちらで受け付けてます</p>
@@ -840,8 +862,9 @@
   </div>
 </section>
 
+
 <!-- ====== CONTENTS ====== -->
-<section id="anchor-contents" class="section-contents-area">
+<section id="anchor-contents" class="section-contents-area sec-alt">
   <div class="sec-title anim">
     <div class="en font-bg">CONTENTS</div>
     <span class="jp">3つのコンテンツ</span>
@@ -851,7 +874,7 @@
       <div class="contents-card anim">
         <div class="contents-card-header c1">
           <div class="contents-card-num font-bg">01</div>
-          <div class="contents-card-name">作品上映</div>
+          <div class="contents-card-name"><span class="contents-card-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>作品上映</div>
           <div class="contents-card-tag font-bg">REMOTE OK</div>
         </div>
         <div class="contents-card-body">各サークルの作品を上映し参加者全体で鑑賞。リアルタイムコメント対応予定。<br><a href="screenings.html" style="display:inline-block;margin-top:8px;color:#e489ff;font-weight:700;font-size:13px;border-bottom:2px solid #e489ff">上映作品一覧を見る →</a></div>
@@ -859,7 +882,7 @@
       <div class="contents-card anim" style="transition-delay:0.1s">
         <div class="contents-card-header c2">
           <div class="contents-card-num font-bg">02</div>
-          <div class="contents-card-name">プレゼン</div>
+          <div class="contents-card-name"><span class="contents-card-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg></span>プレゼン</div>
           <div class="contents-card-tag font-bg">REMOTE OK</div>
         </div>
         <div class="contents-card-body">有志による15分程度の発表。制作技術、運営ノウハウなどアニ研に関すること何でも。<br><a href="presentations.html" style="display:inline-block;margin-top:8px;color:#e489ff;font-weight:700;font-size:13px;border-bottom:2px solid #e489ff">プレゼン一覧を見る →</a></div>
@@ -868,7 +891,7 @@
         <div class="contents-card-badge">MAIN</div>
         <div class="contents-card-header c3">
           <div class="contents-card-num font-bg">03</div>
-          <div class="contents-card-name">ブース展示</div>
+          <div class="contents-card-name"><span class="contents-card-icon"><svg viewBox="0 0 24 24"><path d="M2 17h2v.5H3v1h1v.5H2v1h3v-4H2v1zm1-9h1V4H2v1h1v3zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2v1zm5-6v2h14V5H7zm0 14h14v-2H7v2zm0-6h14v-2H7v2z"/></svg></span>ブース展示</div>
           <div class="contents-card-tag font-bg">ON-SITE ONLY</div>
         </div>
         <div class="contents-card-body">絵コンテやキャラデザなど制作資料を展示。他大学のブースに行って直接交流できる。<br><a href="booths.html" style="display:inline-block;margin-top:8px;color:#e489ff;font-weight:700;font-size:13px;border-bottom:2px solid #e489ff">ブース展示一覧を見る →</a></div>
@@ -876,6 +899,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- ====== TIMETABLE ====== -->
 <section id="anchor-timetable" class="section-timetable">
@@ -886,43 +910,37 @@
   <div class="section-contents">
     <div class="tt-list">
       <div class="tt-item anim">
-        <div class="tt-time font-bg">11:00–12:00</div>
-        <div class="tt-bar b1"></div>
+        <p class="tt-time">11:00 – 12:00</p>
         <div class="tt-body">
           <div class="tt-name">作品上映</div>
           <div class="tt-desc">各サークルの作品を上映・鑑賞</div>
-          <span class="tt-tag online">YouTube配信あり</span>
+          <div class="tt-tags"><span class="tt-tag online">YouTube配信あり</span></div>
         </div>
       </div>
-      <div class="tt-item anim" style="transition-delay:0.08s">
-        <div class="tt-time font-bg">12:00–12:30</div>
-        <div class="tt-bar b2"></div>
+      <div class="tt-item tt-break anim" style="transition-delay:0.08s">
+        <p class="tt-time">12:00 – 12:30</p>
         <div class="tt-body">
-          <div class="tt-name" style="color:#bbb">昼休憩</div>
+          <div class="tt-name">昼休憩</div>
         </div>
       </div>
       <div class="tt-item anim" style="transition-delay:0.16s">
-        <div class="tt-time font-bg">12:30–14:50</div>
-        <div class="tt-bar b3"></div>
+        <p class="tt-time">12:30 – 14:50</p>
         <div class="tt-body">
           <div class="tt-name">プレゼン発表</div>
           <div class="tt-desc">有志による制作技術・運営ノウハウ等の発表</div>
-          <span class="tt-tag online">YouTube配信あり</span>
-          <span class="tt-tag">Slidoで質疑応答</span>
+          <div class="tt-tags"><span class="tt-tag online">YouTube配信あり</span><span class="tt-tag">Slidoで質疑応答</span></div>
         </div>
       </div>
       <div class="tt-item anim" style="transition-delay:0.24s">
-        <div class="tt-time font-bg">15:00–17:00</div>
-        <div class="tt-bar b4"></div>
+        <p class="tt-time">15:00 – 17:00</p>
         <div class="tt-body">
           <div class="tt-name">ブース展示</div>
           <div class="tt-desc">制作資料の展示・直接交流</div>
-          <span class="tt-tag">現地のみ</span>
+          <div class="tt-tags"><span class="tt-tag">現地のみ</span></div>
         </div>
       </div>
       <div class="tt-item anim" style="transition-delay:0.32s">
-        <div class="tt-time font-bg">17:00–19:00</div>
-        <div class="tt-bar b5"></div>
+        <p class="tt-time">17:00 – 19:00</p>
         <div class="tt-body">
           <div class="tt-name">立食パーティー</div>
           <div class="tt-desc">任意参加 / 参加費 2,000円程度（当日徴収）</div>
@@ -933,7 +951,7 @@
 </section>
 
 <!-- ====== INFO ====== -->
-<section id="anchor-info" class="section-eventinfo">
+<section id="anchor-info" class="section-eventinfo sec-alt">
   <div class="sec-title anim">
     <div class="en font-bg">INFO</div>
     <span class="jp">開催情報</span>
@@ -963,7 +981,7 @@
     </ul>
 
     <div class="cta-section anim">
-      <div class="common-button pop-anim"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR92XCTTV27hKu4xeZqKY7f3uZ5LFOnAbdTz2ewlhR8DF7tA/viewform?usp=dialog" target="_blank" rel="noopener">
+      <div class="common-button"><a href="https://docs.google.com/forms/d/e/1FAIpQLSfR92XCTTV27hKu4xeZqKY7f3uZ5LFOnAbdTz2ewlhR8DF7tA/viewform?usp=dialog" target="_blank" rel="noopener">
         <p>参加申し込み</p>
       </a></div>
       <p class="cta-note">受付：2/1〜2/28 / サークル代表者がまとめて登録<br>※サークル単位での申し込みのみこちらで受け付けてます</p>
@@ -994,20 +1012,23 @@
 </section>
 
 <!-- ====== SCHEDULE ====== -->
-<section id="anchor-schedule" class="section-schedule">
+<section id="anchor-schedule" class="section-schedule sec-alt">
   <div class="sec-title anim">
     <div class="en font-bg">SCHEDULE</div>
     <span class="jp">交流会までの流れ</span>
   </div>
   <div class="section-contents">
+    <div class="tl-scroll">
     <div class="tl">
       <div class="tl-item done anim" style="transition-delay:0.2s">
         <span class="tl-date font-bg">— 1/18</span>
-        <span class="tl-label">事前アンケート <span class="tl-badge tl-badge-end font-bg">END</span></span>
+        <span class="tl-label">事前アンケート</span>
+        <span class="tl-badge tl-badge-end font-bg">END</span>
       </div>
       <div class="tl-item active anim" style="transition-delay:0.35s">
         <span class="tl-date font-bg">2/1 — 2/28</span>
-        <span class="tl-label">参加申し込み <span class="tl-badge tl-badge-now font-bg">NOW</span></span>
+        <span class="tl-label">参加申し込み</span>
+        <span class="tl-badge tl-badge-now font-bg">NOW</span>
       </div>
       <div class="tl-item anim" style="transition-delay:0.5s">
         <span class="tl-date font-bg">2/15</span>
@@ -1029,6 +1050,7 @@
         <span class="tl-date font-bg">3/29</span>
         <span class="tl-label">交流会本番</span>
       </div>
+    </div>
     </div>
   </div>
 </section>
@@ -1068,8 +1090,9 @@
   </div>
 </section>
 
+
 <!-- ====== CIRCLES ====== -->
-<section id="anchor-circles" class="section-circles">
+<section id="anchor-circles" class="section-circles sec-alt">
   <div class="sec-title anim">
     <div class="en font-bg">CIRCLES</div>
     <span class="jp">参加団体</span>
@@ -1163,7 +1186,7 @@
 </section>
 
 <!-- ====== SPONSOR ====== -->
-<section id="anchor-sponsor" class="section-sponsor">
+<section id="anchor-sponsor" class="section-sponsor sec-alt">
   <div class="sec-title anim">
     <div class="en font-bg">SPONSOR</div>
     <span class="jp">スポンサー</span>
@@ -1262,13 +1285,7 @@ document.querySelectorAll('.tl').forEach(el => tlObs.observe(el));
 window.addEventListener('DOMContentLoaded', () => {
   const fvContent = document.querySelector('.fv-content');
   if (fvContent) {
-    fvContent.style.opacity = '0';
-    fvContent.style.transform = 'translateY(40px)';
-    fvContent.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    setTimeout(() => {
-      fvContent.style.opacity = '1';
-      fvContent.style.transform = 'translateY(0)';
-    }, 200);
+    setTimeout(() => fvContent.classList.add('loaded'), 200);
   }
 });
 </script>
