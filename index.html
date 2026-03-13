@@ -277,6 +277,34 @@
     .fv .entry-button{
       margin:0 auto;
     }
+
+    .countdown{
+      margin:0 auto;text-align:center;
+    }
+    .countdown-label{
+      font-size:14px;font-weight:700;color:#999;letter-spacing:0.08em;margin-bottom:10px;
+    }
+    .countdown-units{
+      display:flex;align-items:center;justify-content:center;gap:4px;
+    }
+    .cd-unit{
+      display:flex;flex-direction:column;align-items:center;
+      background:rgba(228,137,255,0.08);border-radius:12px;
+      padding:10px 14px;min-width:60px;
+    }
+    .cd-num{
+      font-size:clamp(28px,5vw,40px);font-weight:900;
+      color:#e489ff;line-height:1;
+      font-variant-numeric:tabular-nums;
+    }
+    .cd-txt{
+      font-size:11px;font-weight:700;color:#999;margin-top:4px;letter-spacing:0.05em;
+    }
+    .cd-sep{
+      font-size:clamp(20px,4vw,32px);font-weight:900;color:#e489ff;opacity:0.5;
+      padding:0 2px;align-self:flex-start;margin-top:10px;
+    }
+
     .fv-note{
       margin-top:12px;font-size:13px;color:#999;
     }
@@ -837,8 +865,17 @@
     <div class="fv-date font-bg">2026.3.29<span class="week">(SUN)</span></div>
     <p style="display:inline-block;margin:12px 0 0;padding:4px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:0.04em;color:#e489ff;background:rgba(228,137,255,0.08)">現地・オンライン同時開催</p>
     <p class="fv-sub">作品の裏側を共有しよう。<br>大学アニ研同士の、新しい交流の場。</p>
-    <div class="common-button entry-button" style="opacity:0.5;pointer-events:none">
-      <p>参加受付は終了しました</p>
+    <div class="countdown" id="countdown">
+      <p class="countdown-label">開催まであと</p>
+      <div class="countdown-units">
+        <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-txt">日</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-txt">時間</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-mins">--</span><span class="cd-txt">分</span></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit"><span class="cd-num" id="cd-secs">--</span><span class="cd-txt">秒</span></div>
+      </div>
     </div>
     <p class="fv-note" style="margin-top:16px"><a href="https://x.com/search?q=%23%E5%A4%A7%E5%AD%A6%E3%82%A2%E3%83%8B%E7%A0%94%E4%BA%A4%E6%B5%81%E4%BC%9A" target="_blank" rel="noopener" style="color:#e489ff;font-weight:700">#大学アニ研交流会</a></p>
   </div>
@@ -1317,6 +1354,26 @@ window.addEventListener('DOMContentLoaded', () => {
   if (fvContent) {
     setTimeout(() => fvContent.classList.add('loaded'), 200);
   }
+
+  // ====== Countdown ======
+  const target = new Date('2026-03-29T11:00:00+09:00').getTime();
+  function updateCD() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML = '<p class="countdown-label" style="font-size:18px;color:#e489ff">開催中！</p>';
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+  }
+  updateCD();
+  setInterval(updateCD, 1000);
 });
 </script>
 
