@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プレゼン一覧 — 大学アニ研交流会</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=M+PLUS+1:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    ol,ul{list-style:none}
+    a{font-size:inherit;color:inherit;text-decoration:none}
+    img{display:block;width:100%;height:auto}
+    body{
+      font-family:"M PLUS 1",sans-serif;font-size:15px;font-weight:500;color:#333;
+      line-height:1;overflow-x:hidden;
+      background:
+        radial-gradient(ellipse at 10% 50%, rgba(255,137,234,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 50%, rgba(156,224,255,0.08) 0%, transparent 50%),
+        #fff0f6;
+      background-attachment:fixed;
+    }
+    .font-bg{font-family:"Bungee",sans-serif;font-weight:400}
+
+    .page-header{
+      padding:40px 30px 30px;text-align:center;
+    }
+    .page-header .back{
+      display:inline-flex;align-items:center;gap:8px;
+      margin-bottom:20px;padding:10px 24px;border-radius:50px;
+      font-size:13px;font-weight:700;color:#e489ff;
+      background:#fff;border:2px solid transparent;
+      background-image:linear-gradient(#fff,#fff),linear-gradient(to right,#ff89ea,#e489ff,#9ce0ff);
+      background-origin:border-box;background-clip:padding-box,border-box;
+      position:relative;overflow:hidden;
+      transition:all 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .page-header .back::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(to right,#ff89ea,#e489ff,#9ce0ff);
+      opacity:0;transition:opacity 0.3s;border-radius:50px;
+    }
+    .page-header .back:hover::before{opacity:1}
+    .page-header .back:hover{color:#fff;transform:scale(1.06)}
+    .page-header .back span{position:relative;z-index:1}
+    .page-header .back .arrow{position:relative;z-index:1;transition:transform 0.3s}
+    .page-header .back:hover .arrow{transform:translateX(-4px)}
+    .page-header h1{font-size:clamp(32px,6vw,48px);letter-spacing:0.08em}
+    .page-header h1::after{
+      content:"";display:block;width:120px;height:6px;margin:8px auto 0;
+      background:linear-gradient(to right, #ff89ea, #e489ff, #9ce0ff);
+      border-radius:3px;
+    }
+    .page-header .jp{
+      display:block;margin-top:8px;
+      font-size:14px;font-weight:700;color:#e489ff;
+    }
+
+    .pres-section{
+      max-width:760px;margin:0 auto;padding:0 20px 60px;
+    }
+    .pres-list{display:flex;flex-direction:column;gap:0;margin-top:30px}
+    .pres-card{
+      display:flex;gap:24px;
+      padding:30px 0;
+      border-bottom:2px solid rgba(228,137,255,0.25);
+    }
+    .pres-card:last-child{border-bottom:none}
+    .pres-speaker{
+      width:160px;flex-shrink:0;text-align:center;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;
+    }
+    .pres-avatar{
+      width:80px;height:80px;
+      border-radius:50%;object-fit:cover;
+      background:#f0e8f0;
+      margin:0 auto 8px;
+    }
+    .pres-speaker .name{font-size:14px;font-weight:900}
+    .pres-speaker .affil{font-size:11px;color:#999;margin-top:2px;line-height:1.4}
+    .pres-links{
+      display:flex;justify-content:center;gap:8px;margin-top:8px;
+    }
+    .pres-links a{
+      display:inline-flex;justify-content:center;align-items:center;gap:4px;
+      padding:4px 10px;border-radius:50px;
+      background:rgba(228,137,255,0.08);color:#e489ff;
+      transition:background 0.2s, color 0.2s, transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .pres-links a:hover{
+      background:#e489ff;color:#fff;transform:scale(1.15);
+    }
+    .pres-links a svg{width:14px;height:14px;fill:currentColor}
+    .pres-links a span{font-size:10px;font-weight:700}
+    .pres-body{flex:1;min-width:0}
+    .pres-num{
+      display:inline-block;
+      font-size:11px;font-weight:900;letter-spacing:0.04em;
+      padding:2px 10px;border-radius:4px;
+      background:rgba(228,137,255,0.1);color:#e489ff;
+      margin-bottom:8px;
+    }
+    .pres-title{font-size:18px;font-weight:900;line-height:1.4}
+    .pres-desc{font-size:14px;color:#555;line-height:1.7;margin-top:8px}
+    .pres-bio{
+      font-size:12px;color:#999;line-height:1.6;margin-top:10px;
+      padding-top:10px;border-top:1px solid #f0e8f0;
+    }
+    @media (max-width:768px){
+      .pres-card{flex-direction:column;align-items:center;text-align:center}
+      .pres-speaker{width:auto}
+      .pres-body{text-align:left}
+    }
+
+    .footer-bottom{
+      padding:30px 0;text-align:center;
+      background:#333;color:rgba(255,255,255,0.4);font-size:12px;
+    }
+    .footer-credit{display:inline-block;margin-top:6px;font-size:11px}
+    .footer-credit a{color:rgba(255,255,255,0.5);text-decoration:underline;transition:color 0.2s}
+    .footer-credit a:hover{color:#fff}
+  </style>
+</head>
+<body>
+
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-globe" viewBox="0 0 24 24">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+  </symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </symbol>
+  <symbol id="icon-ig" viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </symbol>
+  <symbol id="icon-yt" viewBox="0 0 24 24">
+    <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </symbol>
+</svg>
+
+<div class="page-header">
+  <a href="index.html" class="back"><span class="arrow">←</span><span>トップに戻る</span></a>
+  <h1 class="font-bg">PRESENTATIONS</h1>
+  <span class="jp">プレゼン一覧</span>
+</div>
+
+<div class="pres-section">
+  <div class="pres-list">
+    <div class="pres-card">
+      <div class="pres-speaker">
+        <div class="pres-avatar"></div>
+        <div class="name">発表者名</div>
+        <div class="affil">デジタルハリウッド大学 AniWay</div>
+        <div class="pres-links">
+          <a href="https://x.com/AniWayDHU" target="_blank" rel="noopener" title="サークルX"><svg><use href="#icon-x"/></svg><span>サークル</span></a>
+        </div>
+      </div>
+      <div class="pres-body">
+        <span class="pres-num font-bg">#01</span>
+        <div class="pres-title">AniWayの制作メイキング紹介</div>
+        <div class="pres-desc">発表内容の説明が入ります。制作技術や運営ノウハウなど、アニメ制作に関するテーマを予定しています。</div>
+        <div class="pres-bio">経歴・活動紹介が入ります。</div>
+      </div>
+    </div>
+    <div class="pres-card">
+      <div class="pres-speaker">
+        <img src="../pres-tus.png" alt="" class="pres-avatar">
+        <div class="name">大木 天翔</div>
+        <div class="affil">東京理科大学 動画研究同好会 / 合同会社TOONIQ</div>
+        <div class="pres-links">
+          <a href="https://x.com/tus_douken" target="_blank" rel="noopener" title="サークルX"><svg><use href="#icon-x"/></svg><span>サークル</span></a>
+        </div>
+      </div>
+      <div class="pres-body">
+        <span class="pres-num font-bg">#02</span>
+        <div class="pres-title">「アニメ☆ミツゾウ大作戦！」で失敗したこと</div>
+        <div class="pres-desc">「大学サークルがアニメ制作会社と一緒に作品を作る」——最高にワクワクする企画のはずだった。蓋を開ければスケジュールは崩壊、リテイクは山積み、トラブルは連鎖。誰も語りたがらない失敗談を中心に、赤裸々にお届けします。</div>
+        <div class="pres-bio">2003年千葉県生まれ。東京理科大学理学部第一部物理学科在学中。コロナ禍で廃部状態だった動画研究同好会を復活させ、活動を再建。2025年に合同会社TOONIQを設立し、代表社員を務める。学園祭にてアニメ制作会社・画材店協賛のセル画体験企画を実施するなど、産学連携の取り組みを推進している。</div>
+      </div>
+    </div>
+    <div class="pres-card">
+      <div class="pres-speaker">
+        <img src="../pres-illustalk.jpg" alt="" class="pres-avatar">
+        <div class="name">堀内 慶次郎</div>
+        <div class="affil">イラストーク大学 代表<br>東京理科大学 I部漫画研究同好会</div>
+        <div class="pres-links">
+          <a href="https://x.com/illustalk_univ" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+        </div>
+      </div>
+      <div class="pres-body">
+        <span class="pres-num font-bg" style="background:linear-gradient(to right,#f9fc96,#b1f3e8);color:#333">GUEST</span>
+        <div class="pres-title">大学の枠を超え、創作の未来を創る —— 全国規模の学生クリエイター集団『イラストーク大学』の挑戦</div>
+        <div class="pres-desc">全国70以上の大学から学生クリエイターが集うコミュニティ「イラストーク大学」の活動実態と理念についてお話しします。Discordを活用した日常的な作業環境の提供、公式WEBサイトによる作品発信、合同誌制作を通じたアウトプットの支援など、「学生クリエイターが挫折せず、成長し続けられるインフラ」としての役割を解説。将来的には企業と連携し、学生からプロへのロードマップを構築するという「クリエイターの未来図」についても共有します。</div>
+        <div class="pres-bio">2025年7月に「大学の垣根を越えた交流」を掲げ活動開始。同年9月にはコミティア153にて初の合同誌を制作・販売。2026年1月に公式WEBサイトを開設し、作品発信の場をオンラインにも拡大。現在は全国70大学超のネットワークに成長し、Discordでの作業通話やイベント開催を通じて、若きクリエイターの活動を支え続けている。</div>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:30px;font-size:14px;color:#999">随時更新します</p>
+</div>
+
+<div class="footer-bottom">
+  &copy; 2026 東京理科大学 動画研究同好会<br>
+  <span class="footer-credit">Site by <a href="https://tooniq.co.jp" target="_blank" rel="noopener">TOONIQ LLC</a></span>
+</div>
+
+</body>
+</html>

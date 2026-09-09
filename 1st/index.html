@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<!--
+
+    ╔══════════════════════════════════════════════╗
+    ║                                              ║
+    ║   ソースコード覗いてるの、バレてるよ？👀      ║
+    ║                                              ║
+    ║         ∧＿∧                                 ║
+    ║        ( ･ω･)   アニメ作ろうぜ               ║
+    ║        /　 つ∀o                               ║
+    ║       しー-Ｊ                                 ║
+    ║                                              ║
+    ║   このサイトは大学アニ研交流会の              ║
+    ║   LPとして愛を込めて作られました。            ║
+    ║                                              ║
+    ║   興味あったら運営に参加してね！              ║
+    ║   tus_douken@googlegroups.com                ║
+    ║                                              ║
+    ╚══════════════════════════════════════════════╝
+
+-->
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>大学アニ研交流会 — 第一回（2026.3.29）開催終了</title>
+  <meta name="description" content="大学アニメ研究会同士が垣根を越えて、制作過程の工夫や技術的な悩み、失敗談まで語り合える交流イベント。第一回は2026年3月29日（日）東京理科大学 神楽坂キャンパスにて開催しました。第二回開催に向けて準備中です。">
+  <!-- OGP -->
+  <meta property="og:title" content="大学アニ研交流会 — 第一回（2026.3.29）開催終了">
+  <meta property="og:description" content="上映して終わり、じゃない。プロセスもTipsも、全部シェアしよう。第一回は無事終了しました。第二回開催に向けて準備中です。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tusdouken.github.io/aniken-koryukai/1st/">
+  <meta property="og:image" content="https://tusdouken.github.io/aniken-koryukai/og-image.png">
+  <meta property="og:site_name" content="大学アニ研交流会">
+  <meta property="og:locale" content="ja_JP">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="大学アニ研交流会 — 第一回（2026.3.29）開催終了">
+  <meta name="twitter:description" content="上映して終わり、じゃない。プロセスもTipsも、全部シェアしよう。第一回は無事終了しました。第二回開催に向けて準備中です。">
+  <meta name="twitter:image" content="https://tusdouken.github.io/aniken-koryukai/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=M+PLUS+1:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    /* ====== Reset ====== */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    ol,ul{list-style:none}
+    img{display:block;width:100%;height:auto}
+    a{font-size:inherit;color:inherit;text-decoration:none}
+
+    /* ====== Base ====== */
+    body{
+      font-family:"M PLUS 1",sans-serif;
+      font-size:15px;
+      font-weight:500;
+      color:#333;
+      line-height:1;
+      overflow-x:hidden;
+    }
+    .font-bg{font-family:"Bungee",sans-serif;font-weight:400}
+
+    /* ====== Background ====== */
+    .main-bg{
+      position:fixed;top:0;left:0;width:100%;height:100dvh;
+      background:
+        radial-gradient(ellipse at 10% 50%, rgba(255,137,234,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 50%, rgba(156,224,255,0.08) 0%, transparent 50%),
+        repeating-linear-gradient(0deg, rgba(255,200,230,0.04) 0px, rgba(255,200,230,0.04) 1px, transparent 1px, transparent 40px),
+        repeating-linear-gradient(90deg, rgba(255,200,230,0.04) 0px, rgba(255,200,230,0.04) 1px, transparent 1px, transparent 40px),
+        #fff0f6;
+      z-index:-1;pointer-events:none;
+    }
+
+    /* ====== SVG Defs ====== */
+    .svg-defs{display:none}
+
+    /* ====== Menu Button ====== */
+    .menu-button{
+      position:fixed;top:20px;right:20px;
+      width:50px;height:50px;
+      background:linear-gradient(135deg, #ff89ea, #e489ff, #9ce0ff);
+      border-radius:50%;border:none;
+      cursor:pointer;z-index:100;
+      filter:drop-shadow(0 2px 12px rgba(228,137,255,0.3));
+      display:flex;justify-content:center;align-items:center;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .menu-button:hover{transform:scale(1.1)}
+    .menu-button::before{
+      content:"";position:absolute;
+      width:calc(100% - 4px);height:calc(100% - 4px);
+      background:#fff;border-radius:50%;
+    }
+    .menu-lines{position:relative;width:20px;height:14px;z-index:1}
+    .menu-lines span{
+      position:absolute;left:0;width:20px;height:2.5px;
+      background:#333;border-radius:2px;
+      transition:transform 0.3s, opacity 0.2s;
+    }
+    .menu-lines span:nth-child(1){top:0}
+    .menu-lines span:nth-child(2){top:50%;transform:translateY(-50%)}
+    .menu-lines span:nth-child(3){bottom:0}
+    .menu-button.open .menu-lines span:nth-child(1){transform:translateY(5.75px) rotate(45deg)}
+    .menu-button.open .menu-lines span:nth-child(2){opacity:0}
+    .menu-button.open .menu-lines span:nth-child(3){transform:translateY(-5.75px) rotate(-45deg)}
+
+    /* ====== Nav ====== */
+    nav{
+      position:fixed;top:80px;right:20px;
+      width:240px;padding:20px 0;
+      background:#fff;border-radius:16px;
+      filter:drop-shadow(0 0 20px rgba(228,137,255,0.15));
+      border:1.5px solid rgba(228,137,255,0.15);
+      opacity:0;pointer-events:none;z-index:99;
+      transform:translateY(16px) scale(0.95);
+      transform-origin:top right;
+      transition:opacity 0.25s, transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    nav.open{opacity:1;pointer-events:auto;transform:translateY(0) scale(1)}
+    .menu-list{margin:0 20px}
+    .menu-item{font-size:20px;letter-spacing:0.08em;line-height:1}
+    .menu-item a{
+      display:block;padding:10px 12px;position:relative;
+      color:#333;border-radius:8px;
+      transition:color 0.2s, background 0.2s;
+    }
+    .menu-item a:hover{
+      color:#e489ff;
+      background:rgba(228,137,255,0.06);
+    }
+    .menu-actions{
+      margin:12px 20px 0;padding-top:12px;
+      border-top:1px solid rgba(228,137,255,0.12);
+      display:flex;flex-direction:column;gap:8px;
+    }
+    .menu-action-btn{
+      display:block;text-align:center;
+      padding:10px 0;border-radius:8px;
+      font-size:13px;font-weight:700;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .menu-action-btn:hover{transform:scale(1.04)}
+    .menu-action-btn.primary{
+      background:#403d40;color:#fff;
+    }
+    .menu-action-btn:not(.primary){
+      background:rgba(228,137,255,0.08);color:#e489ff;
+    }
+
+    /* ====== Common Button ====== */
+    .common-button{
+      display:block;position:relative;
+      width:260px;height:68px;cursor:pointer;
+    }
+    .common-button a{
+      display:flex;justify-content:center;align-items:center;gap:8px;
+      position:relative;width:100%;height:100%;
+      background:#333;
+      border-radius:1000px;
+      transition:opacity 0.2s ease;
+    }
+    .common-button:hover a{opacity:0.7}
+    .common-button a p{
+      font-size:22px;font-weight:900;
+      color:#fff;letter-spacing:0.06em;
+    }
+
+    /* ====== Section Title ====== */
+    .sec-title{
+      position:relative;display:flex;flex-direction:column;align-items:center;
+      margin-bottom:60px;
+    }
+    .sec-title .en{
+      font-size:clamp(32px, 6vw, 48px);
+      color:#333;letter-spacing:0.08em;
+      position:relative;
+    }
+    .sec-title .en::after{
+      content:"";display:block;
+      width:100%;height:6px;margin-top:6px;
+      background:linear-gradient(to right, #ff89ea, #e489ff, #9ce0ff);
+      border-radius:3px;
+    }
+    .sec-title .jp{
+      display:block;margin-top:10px;
+      font-size:14px;font-weight:700;text-align:center;
+      color:#e489ff;
+    }
+
+    /* ====== Anim ====== */
+    .anim{
+      transform:translateY(50px);opacity:0;
+      transition:opacity 0.5s, transform 0.5s ease;
+    }
+    .anim.animed{transform:translateY(0);opacity:1}
+
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+    /* ====== FV ====== */
+    .firstview{
+      position:relative;width:100%;
+      min-height:100vh;
+      display:flex;flex-direction:column;
+      justify-content:center;align-items:center;
+      text-align:center;
+      padding:60px 20px;
+      overflow:hidden;
+      background:
+        radial-gradient(ellipse at 30% 40%, rgba(228,137,255,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(156,224,255,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(249,252,150,0.1) 0%, transparent 40%),
+        #fff;
+    }
+
+    /* FV Decorations */
+    .fv-deco{position:absolute;animation:float 2.5s ease-in-out infinite}
+    .fv-deco.d1{top:8%;left:5%;width:80px;height:80px;background:#ff89ea;border-radius:50%;opacity:0.25;animation-delay:0s}
+    .fv-deco.d2{top:12%;right:8%;width:120px;height:50px;background:#e489ff;border-radius:30px;opacity:0.2;animation-delay:0.3s}
+    .fv-deco.d3{top:60%;left:3%;width:60px;height:60px;background:#9ce0ff;border-radius:50%;opacity:0.2;animation-delay:0.5s}
+    .fv-deco.d4{top:70%;right:5%;width:100px;height:40px;background:#b1f3e8;border-radius:20px;opacity:0.2;animation-delay:0.7s}
+    .fv-deco.d5{top:30%;right:15%;width:40px;height:40px;background:#f9fc96;border-radius:50%;opacity:0.3;animation-delay:0.2s}
+    .fv-deco.d6{top:45%;left:10%;width:50px;height:50px;background:#ff78ce;border-radius:12px;opacity:0.15;animation-delay:0.4s;transform:rotate(15deg)}
+    .fv-deco.d7{bottom:15%;left:20%;width:30px;height:30px;background:#b798ff;border-radius:50%;opacity:0.25;animation-delay:0.6s}
+    .fv-deco.d8{bottom:25%;right:20%;width:70px;height:28px;background:#db9ffd;border-radius:14px;opacity:0.18;animation-delay:0.8s}
+
+    /* Star decorations */
+    .fv-star{position:absolute;opacity:0.35}
+    .fv-star svg{fill:#ff89ea}
+    .fv-star.s1{top:18%;left:15%;width:24px;animation:float 3s ease-in-out 0.2s infinite}
+    .fv-star.s2{top:25%;right:20%;width:18px;animation:float 3s ease-in-out 0.8s infinite}
+    .fv-star.s2 svg{fill:#e489ff}
+    .fv-star.s3{bottom:30%;left:25%;width:20px;animation:float 3s ease-in-out 1.2s infinite}
+    .fv-star.s3 svg{fill:#9ce0ff}
+
+    .fv-content{position:relative;z-index:2}
+
+    .fv-content > *{
+      opacity:0;transform:translateY(24px);
+      transition:opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fv-content.loaded > *{opacity:1;transform:translateY(0)}
+    .fv-content.loaded > :nth-child(1){transition-delay:0.1s}
+    .fv-content.loaded > :nth-child(2){transition-delay:0.35s}
+    .fv-content.loaded > :nth-child(3){transition-delay:0.55s}
+    .fv-content.loaded > :nth-child(4){transition-delay:0.7s}
+    .fv-content.loaded > :nth-child(5){transition-delay:0.9s}
+    .fv-content.loaded > :nth-child(6){transition-delay:1.0s}
+    .fv-content.loaded > :nth-child(7){transition-delay:1.1s}
+
+    .fv-title{
+      font-size:clamp(48px, 10vw, 80px);
+      font-weight:900;line-height:1.15;
+      color:#333;margin-bottom:20px;
+    }
+    .fv-title .accent{
+      background:linear-gradient(135deg, #ff89ea, #e489ff);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .fv-date{
+      margin:20px 0 24px;
+      font-size:clamp(22px, 3.5vw, 34px);
+      letter-spacing:0.1em;color:#333;
+    }
+    .fv-date .week,.fv-date .wave{font-size:0.55em}
+    .fv-date .wave{font-weight:900}
+
+    .fv-sub{
+      font-size:clamp(16px, 2.5vw, 20px);font-weight:700;
+      color:#555;line-height:1.7;
+      max-width:480px;margin:0 auto 35px;
+    }
+
+    .fv .entry-button{
+      margin:0 auto;
+    }
+
+    .fv-ended{margin:0 auto;text-align:center}
+    .fv-ended-badge{
+      display:inline-block;padding:12px 32px;border-radius:50px;
+      font-size:clamp(15px,2.4vw,18px);font-weight:900;letter-spacing:0.08em;
+      color:#fff;background:linear-gradient(135deg,#ff89ea,#e489ff);
+      box-shadow:0 4px 18px rgba(228,137,255,0.28);
+    }
+    .fv-ended-thanks{
+      margin-top:16px;font-size:15px;font-weight:700;
+      color:#555;line-height:1.8;
+    }
+
+    .fv-note{
+      margin-top:12px;font-size:13px;color:#999;
+    }
+
+    .fv-scroll{
+      position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+      font-size:11px;letter-spacing:0.15em;color:#bbb;z-index:2;
+    }
+    .fv-scroll::after{
+      content:"";display:block;width:1px;height:36px;
+      background:#ccc;margin:6px auto 0;
+      animation:scrollLine 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollLine{
+      0%{transform:scaleY(0);transform-origin:top}
+      50%{transform:scaleY(1);transform-origin:top}
+      51%{transform:scaleY(1);transform-origin:bottom}
+      100%{transform:scaleY(0);transform-origin:bottom}
+    }
+
+    /* ====== Section shared ====== */
+    section{padding:100px 0;position:relative}
+    .sec-alt{
+      background:rgba(255,255,255,0.6);
+      clip-path:polygon(0 40px, 100% 0, 100% calc(100% - 40px), 0 100%);
+      padding-top:140px;padding-bottom:140px;
+    }
+    .section-contents{
+      position:relative;margin:0 auto;
+      padding:0 30px;max-width:860px;
+    }
+
+    /* ====== INFO ====== */
+    .section-info{padding-top:80px}
+    .info-list{
+      background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+    }
+    .info-item a{
+      display:block;position:relative;padding:24px;
+    }
+    .info-item:not(:last-child) a::before{
+      content:"";position:absolute;bottom:0;left:50%;
+      transform:translateX(-50%);
+      width:calc(100% - 48px);height:1px;background:#ddd;
+    }
+    .info-item .date{font-size:14px;letter-spacing:0.1em}
+    .info-item .title{margin-top:4px;font-size:15px;line-height:1.5;text-align:justify}
+
+    /* ====== EVENT (About) ====== */
+    .section-event{padding:140px 0 100px}
+    .event-catch{
+      font-size:clamp(24px, 6vw, 56px);font-weight:900;
+      line-height:1.5;text-align:center;
+      margin-bottom:48px;letter-spacing:0.02em;
+    }
+    .event-catch .line{
+      display:block;white-space:nowrap;
+      opacity:0;transform:translateY(20px);
+      transition:opacity 0.8s ease, transform 0.8s ease;
+    }
+    .event-catch.animed .line{opacity:1;transform:translateY(0)}
+    .event-catch.animed .line:nth-child(2){transition-delay:0.3s}
+    .event-catch.animed .line:nth-child(3){transition-delay:0.6s}
+    .event-catch .accent{
+      background-image:linear-gradient(transparent 55%, rgba(255,137,234,0.35) 55%);
+      background-size:0% 100%;
+      background-repeat:no-repeat;
+      transition:background-size 1.5s cubic-bezier(0.25,0.46,0.45,0.94) 1s;
+    }
+    .event-catch.animed .accent{
+      background-size:100% 100%;
+    }
+    .event-catch .accent.a2{
+      background-image:linear-gradient(transparent 55%, rgba(156,224,255,0.4) 55%);
+      transition-delay:1.3s;
+    }
+    .event-desc{
+      font-size:clamp(16px, 2.5vw, 20px);line-height:2;text-align:center;
+      color:#555;max-width:760px;margin:0 auto;
+    }
+    .event-desc .hl{
+      font-weight:900;color:#333;white-space:nowrap;
+      background-image:linear-gradient(transparent 65%, rgba(228,137,255,0.15) 65%);
+    }
+
+    /* ====== CONTENTS ====== */
+    .section-contents-area{padding:80px 0 100px}
+    .contents-grid{
+      display:flex;flex-wrap:wrap;gap:24px;
+    }
+    .contents-card{
+      width:calc(33.33% - 16px);
+      background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+      overflow:hidden;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .contents-card:hover{transform:scale(1.03)}
+    .contents-card-header{
+      padding:24px 20px 18px;color:#fff;position:relative;
+    }
+    .contents-card-icon{
+      display:inline-block;width:22px;height:22px;vertical-align:middle;margin-right:6px;
+    }
+    .contents-card-icon svg{width:100%;height:100%;fill:#fff}
+    .contents-card-header.c1{background:#333}
+    .contents-card-header.c2{background:#e489ff}
+    .contents-card-header.c3{background:#ff89ea}
+    .contents-card-num{
+      position:absolute;top:8px;right:14px;
+      font-size:48px;opacity:0.15;line-height:1;
+    }
+    .contents-card-name{font-size:20px;font-weight:900;position:relative}
+    .contents-card-tag{
+      display:inline-block;margin-top:6px;
+      font-size:11px;font-weight:700;letter-spacing:0.04em;
+      padding:3px 10px;
+      background:rgba(255,255,255,0.2);border-radius:4px;
+    }
+    .contents-card-body{
+      padding:20px;font-size:14px;color:#555;line-height:1.7;
+    }
+    .contents-card-badge{
+      position:absolute;top:0;right:0;
+      background:linear-gradient(to right, #f9fc96, #b1f3e8);
+      color:#333;font-size:11px;font-weight:900;
+      padding:4px 12px;border-radius:0 10px 0 8px;
+    }
+
+    /* ====== EVENT INFO ====== */
+    .section-eventinfo{padding:80px 0 100px}
+    .event-list{display:flex;flex-direction:column;gap:0;margin-top:30px;max-width:520px;margin-left:auto;margin-right:auto}
+    .event-item{
+      display:flex;
+      padding:18px 0;
+      border-bottom:1px solid rgba(228,137,255,0.15);
+    }
+    .event-item:last-child{border-bottom:none}
+    .event-item .name{
+      width:160px;flex-shrink:0;
+      font-size:15px;font-weight:900;color:#e489ff;
+    }
+    .event-item .detail{
+      width:calc(100% - 160px);
+      font-size:16px;font-weight:500;line-height:1.7;
+    }
+
+    /* ====== SCHEDULE ====== */
+    .section-schedule{padding:80px 0 100px}
+    .tl-scroll{overflow-x:auto;overflow-y:visible;padding-bottom:8px}
+    .tl{
+      display:flex;position:relative;
+      padding-top:20px;
+    }
+    .tl::before{
+      content:"";position:absolute;top:20px;left:0;right:0;
+      height:3px;
+      background:#ddd;
+      border-radius:2px;
+      transform-origin:left;
+      transition:transform 1.4s cubic-bezier(0.25,0.46,0.45,0.94);
+      transform:scaleX(0);
+    }
+    .tl.tl-drawn::before{transform:scaleX(1)}
+    .tl-item{
+      position:relative;flex:1;
+      text-align:center;
+      padding:0 4px;
+    }
+    .tl-item.anim{transform:translateY(20px);opacity:0}
+    .tl-item.anim.animed{transform:translateY(0);opacity:1}
+    .tl-item::before{
+      content:"";display:block;
+      width:14px;height:14px;
+      margin:-7px auto 12px;
+      border-radius:50%;
+      background:#fff;
+      border:3px solid #e489ff;
+      position:relative;z-index:1;
+      transform:scale(0);
+      transition:transform 0.4s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .tl-item.animed::before{transform:scale(1)}
+    .tl-item.done::before{
+      background:#ddd;border-color:#ddd;
+      width:10px;height:10px;margin-top:-5px;
+    }
+    .tl-item.active::before{
+      background:#ff89ea;border-color:#ff89ea;
+      box-shadow:0 0 0 6px rgba(255,137,234,0.2);
+    }
+    .tl-item.active.animed::before{
+      transform:scale(1);
+      animation:pulse 2s ease-in-out 0.4s infinite;
+    }
+    .tl-item.highlight::before{
+      background:#e489ff;
+      border-color:#e489ff;
+      width:18px;height:18px;margin-top:-9px;
+    }
+    @keyframes pulse{
+      0%,100%{box-shadow:0 0 0 6px rgba(255,137,234,0.2)}
+      50%{box-shadow:0 0 0 12px rgba(255,137,234,0.08)}
+    }
+    .tl-date{
+      font-size:13px;letter-spacing:0.04em;
+      color:#999;display:block;
+    }
+    .tl-label{
+      display:block;margin-top:6px;
+      font-size:15px;font-weight:700;
+      writing-mode:vertical-rl;text-orientation:mixed;
+      margin-left:auto;margin-right:auto;
+      line-height:1.4;
+    }
+    .tl-item.done .tl-label{color:#bbb;font-weight:500;text-decoration:line-through}
+    .tl-item.active .tl-label{color:#333}
+    .tl-item.highlight .tl-label{
+      font-size:17px;font-weight:900;color:#e489ff;
+    }
+    .tl-badge{
+      display:block;
+      writing-mode:horizontal-tb;
+      font-size:11px;font-weight:900;
+      padding:3px 8px;border-radius:4px;
+      margin-top:6px;
+      width:fit-content;margin-left:auto;margin-right:auto;
+    }
+    .tl-badge-end{background:#eee;color:#999}
+    .tl-badge-now{background:#ff89ea;color:#fff}
+
+    /* ====== TIMETABLE ====== */
+    .section-timetable{padding:80px 0 100px}
+    .tt-list{display:flex;flex-direction:column;gap:0;max-width:520px;margin:0 auto}
+    .tt-item{
+      display:flex;
+      padding:18px 0;
+      border-bottom:1px solid rgba(228,137,255,0.15);
+    }
+    .tt-item:last-child{border-bottom:none}
+    .tt-time{
+      width:160px;flex-shrink:0;
+      font-size:15px;font-weight:900;color:#e489ff;
+    }
+    .tt-body{flex:1}
+    .tt-name{font-size:16px;font-weight:900}
+    .tt-break .tt-name{color:#bbb}
+    .tt-desc{font-size:14px;color:#666;margin-top:4px;line-height:1.6}
+    .tt-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+    .tt-tag{
+      display:inline-block;
+      font-size:11px;font-weight:700;
+      padding:2px 10px;border-radius:4px;
+      background:rgba(228,137,255,0.1);color:#e489ff;
+    }
+    .tt-tag.online{background:rgba(156,224,255,0.15);color:#5bb8e0}
+
+    /* ====== ACCESS ====== */
+    .section-access{padding:80px 0 100px}
+    .access-info{
+      display:flex;gap:24px;flex-wrap:wrap;
+    }
+    .access-map{
+      flex:1;min-width:280px;
+      border-radius:10px;overflow:hidden;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+    }
+    .access-map iframe{display:block;width:100%;height:300px;border:none}
+    .access-detail{
+      flex:1;min-width:240px;
+      padding:24px 0;
+      font-size:15px;line-height:1.8;color:#555;
+    }
+    .access-detail strong{color:#333;font-weight:900}
+    .access-detail .station{
+      display:inline-block;margin-top:8px;padding:4px 12px;
+      background:rgba(228,137,255,0.08);color:#e489ff;
+      border-radius:6px;font-size:13px;font-weight:700;
+    }
+
+    /* ====== CIRCLES ====== */
+    .section-circles{padding:80px 0 100px}
+    .circles-grid{
+      display:flex;flex-wrap:wrap;gap:16px;
+      justify-content:center;
+    }
+    .circle-card{
+      width:calc(33.33% - 12px);min-width:160px;
+      padding:20px;background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+      text-align:center;
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .circle-card:hover{transform:scale(1.03)}
+    .circle-card .circle-logo{
+      width:200px;height:200px;object-fit:contain;
+      margin:0 auto 14px;border-radius:50%;
+    }
+    .circle-card .univ{font-size:12px;color:#999;font-weight:500}
+    .circle-card .cname{font-size:15px;font-weight:900;margin-top:4px}
+    .circle-links{
+      display:flex;justify-content:center;gap:10px;margin-top:8px;
+    }
+    .circle-links a{
+      display:inline-flex;justify-content:center;align-items:center;
+      width:30px;height:30px;border-radius:50%;
+      background:rgba(228,137,255,0.08);color:#e489ff;
+      transition:background 0.2s, color 0.2s, transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .circle-links a:hover{
+      background:#e489ff;color:#fff;transform:scale(1.15);
+    }
+    .circle-links a svg{width:16px;height:16px;fill:currentColor}
+    .circles-note{
+      text-align:center;margin-top:24px;
+      font-size:14px;color:#999;line-height:1.6;
+    }
+
+    /* ====== CTA ====== */
+    .cta-section{
+      text-align:center;padding:60px 0 40px;
+    }
+    .cta-section .common-button{margin:0 auto}
+    .cta-note{
+      margin-top:12px;font-size:13px;color:#999;
+    }
+
+    /* ====== REPORT ====== */
+    .section-report{padding:80px 0 100px}
+    .report-box{
+      max-width:640px;margin:0 auto;text-align:center;
+      background:#fff;border-radius:16px;padding:56px 30px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+    }
+    .report-icon{font-size:44px;line-height:1;margin-bottom:18px}
+    .report-title{font-size:20px;font-weight:900;margin-bottom:12px}
+    .report-desc{font-size:14px;color:#777;line-height:1.9}
+
+    /* ====== NEXT ====== */
+    .section-next{padding:80px 0 100px}
+    .next-box{
+      max-width:640px;margin:0 auto;text-align:center;
+      background:#fff;border-radius:16px;padding:44px 30px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+    }
+    .next-lead{
+      font-size:clamp(18px,3vw,24px);font-weight:900;
+      line-height:1.6;margin-bottom:16px;
+    }
+    .next-lead .accent{
+      background:linear-gradient(135deg,#ff89ea,#e489ff);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .next-desc{
+      font-size:15px;color:#555;line-height:1.9;margin-bottom:26px;
+    }
+    .next-actions{
+      display:flex;justify-content:center;gap:14px;flex-wrap:wrap;
+    }
+    .next-actions .grad-btn svg{width:16px;height:16px;fill:currentColor;position:relative;z-index:1}
+
+    /* ====== CONTACT ====== */
+    .section-contact{padding:80px 0 60px}
+    .contact-inner{
+      text-align:center;max-width:440px;margin:0 auto;
+    }
+    .contact-inner p{font-size:15px;color:#555;margin-bottom:4px;line-height:1.5}
+    .contact-inner strong{color:#333;font-weight:900}
+    .contact-links{
+      display:flex;justify-content:center;gap:16px;margin-top:16px;flex-wrap:wrap;
+    }
+    .contact-links .grad-btn svg{width:18px;height:18px;fill:currentColor;position:relative;z-index:1}
+
+    /* ====== Q&A ====== */
+    .section-qanda{padding:80px 0 100px}
+    .qanda-list{
+      display:flex;flex-direction:column;gap:20px;
+    }
+    .qanda-item{
+      padding:20px 24px;
+      background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+    }
+    .qanda-item .question{
+      position:relative;padding-left:38px;
+      font-weight:700;line-height:1.4;
+    }
+    .qanda-item .question::before{
+      content:"Q";position:absolute;left:0;top:-2px;
+      display:flex;justify-content:center;align-items:center;
+      width:30px;height:30px;
+      font-family:"Bungee",sans-serif;font-size:15px;
+      color:#fff;
+      background:linear-gradient(135deg, #ff89ea, #e489ff);
+      border-radius:50%;
+      box-shadow:0 2px 8px rgba(255,137,234,0.3);
+    }
+    .qanda-item .answer{
+      position:relative;padding-left:38px;
+      margin-top:16px;font-size:14px;line-height:1.6;color:#555;
+    }
+    .qanda-item .answer::before{
+      content:"A";position:absolute;left:0;top:-2px;
+      display:flex;justify-content:center;align-items:center;
+      width:30px;height:30px;
+      font-family:"Bungee",sans-serif;font-size:15px;
+      color:#e489ff;
+      background:#fff;
+      border:2px solid #e489ff;
+      border-radius:50%;
+    }
+    .qa-more{text-align:center;margin-top:30px}
+
+    /* ====== SPONSOR ====== */
+    .section-sponsor{padding:80px 0 60px}
+    .sponsor-area{
+      text-align:center;margin-bottom:40px;
+    }
+    .sponsor-label{
+      display:inline-block;padding:6px 20px;
+      background:#333;color:#fff;border-radius:8px;
+      font-size:13px;font-weight:700;margin-bottom:20px;
+    }
+    .sponsor-list{
+      display:flex;justify-content:center;align-items:center;
+      flex-wrap:wrap;gap:30px;
+    }
+    .sponsor-item{
+      display:block;padding:16px 32px;
+      background:#fff;border-radius:10px;
+      filter:drop-shadow(0 0 10px #e0cfe0);
+      transition:transform 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+    }
+    .sponsor-item:hover{transform:scale(1.05)}
+    .sponsor-item img{display:block;height:60px;width:auto}
+    .sponsor-recruit{
+      margin-top:32px;text-align:center;
+    }
+    .sponsor-recruit p{
+      font-size:14px;color:#555;line-height:1.6;margin-bottom:12px;
+    }
+    /* ====== Gradient outline button ====== */
+    .grad-btn{
+      display:inline-flex;align-items:center;gap:8px;
+      position:relative;
+      padding:12px 28px;border-radius:50px;
+      font-size:14px;font-weight:700;
+      color:#e489ff;background:#fff;
+      border:2px solid transparent;
+      background-image:linear-gradient(#fff,#fff),linear-gradient(to right,#ff89ea,#e489ff,#9ce0ff);
+      background-origin:border-box;
+      background-clip:padding-box,border-box;
+      transition:all 0.3s cubic-bezier(0.08,1.32,0.75,1.67);
+      overflow:hidden;
+    }
+    .grad-btn::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(to right,#ff89ea,#e489ff,#9ce0ff);
+      opacity:0;transition:opacity 0.3s;border-radius:50px;
+    }
+    .grad-btn:hover::before{opacity:1}
+    .grad-btn:hover{color:#fff;transform:scale(1.06)}
+    .grad-btn span{position:relative;z-index:1}
+    .grad-btn .arrow{
+      position:relative;z-index:1;
+      transition:transform 0.3s;
+    }
+    .grad-btn:hover .arrow{transform:translateX(4px)}
+
+    /* ====== Notice ====== */
+    .notice-bar{
+      text-align:center;padding:12px;
+      font-size:12px;color:#999;
+      background:rgba(255,240,246,0.5);
+    }
+
+    /* ====== Footer ====== */
+    .footer-bottom{
+      padding:40px 0;text-align:center;
+      background:#333;color:rgba(255,255,255,0.4);
+      font-size:12px;
+    }
+    .footer-credit{display:inline-block;margin-top:6px;font-size:11px}
+    .footer-credit a{color:rgba(255,255,255,0.5);text-decoration:underline;transition:color 0.2s}
+    .footer-credit a:hover{color:#fff}
+
+    /* ====== Responsive ====== */
+    @media (max-width:768px){
+      .fv-title{font-size:2.6rem}
+      .contents-grid{flex-direction:column}
+      .contents-card{width:100%}
+      .event-item{flex-direction:column;gap:8px}
+      .event-item .name{width:100%}
+      .event-item .detail{width:100%}
+      .sec-title .en{font-size:clamp(24px, 5vw, 32px)}
+      section{padding:60px 0}
+      .section-contents{padding:0 5%}
+      .common-button{width:220px;height:56px}
+      .common-button a p{font-size:18px}
+      .event-text.emphasis{font-size:18px}
+      .fv-deco.d1,.fv-deco.d2,.fv-deco.d4,.fv-deco.d8{display:none}
+      .tt-item{flex-direction:column;gap:8px}
+      .tt-time{width:100%}
+      .access-info{flex-direction:column}
+      .circle-card{width:calc(50% - 8px);min-width:0}
+      .circle-card .circle-logo{width:100%;max-width:200px;height:auto;aspect-ratio:1}
+    }
+  </style>
+</head>
+<body>
+
+<div class="notice-bar">このページは<strong>第一回（2026.3.29）</strong>の記録です。<a href="../" style="color:#e489ff;font-weight:700;text-decoration:underline">第二回のページはこちら →</a></div>
+
+<div class="main-bg"></div>
+
+<svg class="svg-defs" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-star" viewBox="0 0 40 40">
+    <path d="M38.7,21.7c1.8-.4,1.8-2.9,0-3.3-4.9-1.2-9.2-2.8-11.3-4.8-2-1.9-4.2-6.6-5.7-12.2-.5-1.8-3-1.8-3.5,0-1.5,5.6-3.7,10.3-5.7,12.2-2.1,2-6.3,3.7-11.3,4.8-1.8.4-1.8,2.9,0,3.3,4.9,1.2,9.2,2.8,11.3,4.8,2,1.9,4.2,6.6,5.7,12.2.5,1.8,3,1.8,3.5,0,1.5-5.6,3.7-10.3,5.7-12.2,2.1-2,6.3-3.7,11.3-4.8Z"/>
+  </symbol>
+  <symbol id="icon-globe" viewBox="0 0 24 24">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+  </symbol>
+  <symbol id="icon-x" viewBox="0 0 24 24">
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+  </symbol>
+  <symbol id="icon-ig" viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24">
+    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+  </symbol>
+  <symbol id="icon-yt" viewBox="0 0 24 24">
+    <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </symbol>
+</svg>
+
+<button class="menu-button" onclick="document.querySelector('nav').classList.toggle('open');this.classList.toggle('open')">
+  <div class="menu-lines"><span></span><span></span><span></span></div>
+</button>
+
+<nav>
+  <ul class="menu-list">
+    <li class="menu-item font-bg"><a href="#" class="scroll">TOP</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-event" class="scroll">EVENT</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-contents" class="scroll">CONTENTS</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-timetable" class="scroll">TIMETABLE</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-info" class="scroll">INFO</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-access" class="scroll">ACCESS</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-schedule" class="scroll">SCHEDULE</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-report" class="scroll">REPORT</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-circles" class="scroll">CIRCLES</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-qanda" class="scroll">Q&A</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-next" class="scroll">NEXT</a></li>
+    <li class="menu-item font-bg"><a href="#anchor-contact" class="scroll">CONTACT</a></li>
+  </ul>
+  <div class="menu-actions">
+    <a href="../" class="menu-action-btn primary">第二回のページへ</a>
+    <a href="mailto:tus_douken@googlegroups.com?subject=%E3%80%90%E5%A4%A7%E5%AD%A6%E3%82%A2%E3%83%8B%E7%A0%94%E4%BA%A4%E6%B5%81%E4%BC%9A%E3%80%91%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" class="menu-action-btn">スポンサーのお問い合わせ</a>
+  </div>
+</nav>
+
+<!-- ====== FV ====== -->
+<div class="firstview fv">
+  <div class="fv-deco d1"></div>
+  <div class="fv-deco d2"></div>
+  <div class="fv-deco d3"></div>
+  <div class="fv-deco d4"></div>
+  <div class="fv-deco d5"></div>
+  <div class="fv-deco d6"></div>
+  <div class="fv-deco d7"></div>
+  <div class="fv-deco d8"></div>
+
+  <div class="fv-star s1"><svg><use href="#icon-star"/></svg></div>
+  <div class="fv-star s2"><svg><use href="#icon-star"/></svg></div>
+  <div class="fv-star s3"><svg><use href="#icon-star"/></svg></div>
+
+  <div class="fv-content">
+    <h1 class="fv-title">第一回<br>大学アニ研<span class="accent">交流会</span></h1>
+    <div class="fv-date font-bg">2026.3.29<span class="week">(SUN)</span></div>
+    <p style="display:inline-block;margin:12px 0 0;padding:4px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:0.04em;color:#e489ff;background:rgba(228,137,255,0.08)">現地・オンライン同時開催で実施</p>
+    <p class="fv-sub">作品の裏側を共有しよう。<br>大学アニ研同士の、新しい交流の場。</p>
+    <div class="fv-ended">
+      <span class="fv-ended-badge">第一回は終了しました</span>
+      <p class="fv-ended-thanks">ご参加いただいたみなさま、<br>ありがとうございました。</p>
+    </div>
+    <p class="fv-note" style="margin-top:16px"><a href="https://x.com/search?q=%23%E5%A4%A7%E5%AD%A6%E3%82%A2%E3%83%8B%E7%A0%94%E4%BA%A4%E6%B5%81%E4%BC%9A" target="_blank" rel="noopener" style="color:#e489ff;font-weight:700">#大学アニ研交流会</a></p>
+  </div>
+  <div class="fv-scroll font-bg">SCROLL</div>
+</div>
+
+<!-- ====== EVENT ====== -->
+<section id="anchor-event" class="section-event">
+  <div class="sec-title anim">
+    <div class="en font-bg">EVENT</div>
+    <span class="jp">イベント概要</span>
+  </div>
+  <div class="section-contents">
+    <div class="event-catch anim">
+      <span class="line">上映して終わり、じゃない。</span>
+      <span class="line"><span class="accent">プロセス</span>も<span class="accent a2">Tips</span>も、</span>
+      <span class="line">全部シェアしよう。</span>
+    </div>
+    <p class="event-desc anim">大学アニメ研究会同士が垣根を越えて、<span class="hl">制作過程の工夫</span>や<span class="hl">技術的な悩み</span>、<br>失敗談まで語り合える交流イベントです。</p>
+  </div>
+</section>
+
+
+<!-- ====== CONTENTS ====== -->
+<section id="anchor-contents" class="section-contents-area sec-alt">
+  <div class="sec-title anim">
+    <div class="en font-bg">CONTENTS</div>
+    <span class="jp">3つのコンテンツ</span>
+  </div>
+  <div class="section-contents">
+    <div class="contents-grid">
+      <div class="contents-card anim">
+        <div class="contents-card-header c1">
+          <div class="contents-card-num font-bg">01</div>
+          <div class="contents-card-name"><span class="contents-card-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>作品上映</div>
+          <div class="contents-card-tag font-bg">REMOTE OK</div>
+        </div>
+        <div class="contents-card-body">各サークルの作品を上映し、参加者全体で鑑賞しました。<br><a href="screenings.html" style="display:inline-block;margin-top:8px;color:#e489ff;font-weight:700;font-size:13px;border-bottom:2px solid #e489ff">上映作品一覧を見る →</a></div>
+      </div>
+      <div class="contents-card anim" style="transition-delay:0.1s">
+        <div class="contents-card-header c2">
+          <div class="contents-card-num font-bg">02</div>
+          <div class="contents-card-name"><span class="contents-card-icon"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg></span>プレゼン</div>
+          <div class="contents-card-tag font-bg">REMOTE OK</div>
+        </div>
+        <div class="contents-card-body">有志による15分程度の発表。制作技術や運営ノウハウなど、アニ研に関することを語りました。<br><a href="presentations.html" style="display:inline-block;margin-top:8px;color:#e489ff;font-weight:700;font-size:13px;border-bottom:2px solid #e489ff">プレゼン一覧を見る →</a></div>
+      </div>
+      <div class="contents-card anim" style="transition-delay:0.2s">
+        <div class="contents-card-badge">MAIN</div>
+        <div class="contents-card-header c3">
+          <div class="contents-card-num font-bg">03</div>
+          <div class="contents-card-name"><span class="contents-card-icon"><svg viewBox="0 0 24 24"><path d="M2 17h2v.5H3v1h1v.5H2v1h3v-4H2v1zm1-9h1V4H2v1h1v3zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2v1zm5-6v2h14V5H7zm0 14h14v-2H7v2zm0-6h14v-2H7v2z"/></svg></span>ブース展示</div>
+          <div class="contents-card-tag font-bg">ON-SITE ONLY</div>
+        </div>
+        <div class="contents-card-body">絵コンテやキャラデザなど制作資料を展示。他大学のブースを回って直接交流しました。<br><a href="booths.html" style="display:inline-block;margin-top:8px;color:#e489ff;font-weight:700;font-size:13px;border-bottom:2px solid #e489ff">ブース展示一覧を見る →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== TIMETABLE ====== -->
+<section id="anchor-timetable" class="section-timetable">
+  <div class="sec-title anim">
+    <div class="en font-bg">TIMETABLE</div>
+    <span class="jp">当日のタイムテーブル</span>
+  </div>
+  <div class="section-contents">
+    <div class="tt-list">
+      <div class="tt-item tt-break anim">
+        <p class="tt-time">12:00 – 13:00</p>
+        <div class="tt-body">
+          <div class="tt-name">受付</div>
+        </div>
+      </div>
+      <div class="tt-item tt-pre anim" style="transition-delay:0.00s">
+        <p class="tt-time">13:00 – 13:15</p>
+        <div class="tt-body">
+          <div class="tt-name">開会のあいさつ</div>
+        </div>
+      </div>
+      <div class="tt-item anim">
+        <p class="tt-time">13:15 – 14:15</p>
+        <div class="tt-body">
+          <div class="tt-name">作品上映</div>
+          <div class="tt-desc">各サークルの作品を上映・鑑賞</div>
+          <div class="tt-tags"><span class="tt-tag online">YouTube配信あり</span></div>
+        </div>
+      </div>
+      <div class="tt-item tt-break anim" style="transition-delay:0.08s">
+        <p class="tt-time">14:15 – 14:25</p>
+        <div class="tt-body">
+          <div class="tt-name">休憩</div>
+        </div>
+      </div>
+      <div class="tt-item anim" style="transition-delay:0.16s">
+        <p class="tt-time">14:25 – 15:10</p>
+        <div class="tt-body">
+          <div class="tt-name">プレゼン発表</div>
+          <div class="tt-desc">有志による制作技術・運営ノウハウ等の発表</div>
+          <div class="tt-tags"><span class="tt-tag online">YouTube配信あり</span><span class="tt-tag">Slidoで質疑応答</span></div>
+        </div>
+      </div>
+      <div class="tt-item tt-break anim" style="transition-delay:0.20s">
+        <p class="tt-time">15:10 – 15:30</p>
+        <div class="tt-body">
+          <div class="tt-name">休憩・ブース準備</div>
+        </div>
+      </div>
+      <div class="tt-item anim" style="transition-delay:0.24s">
+        <p class="tt-time">15:30 – 16:30</p>
+        <div class="tt-body">
+          <div class="tt-name">ブース展示</div>
+          <div class="tt-desc">制作資料の展示・直接交流</div>
+          <div class="tt-tags"><span class="tt-tag">現地のみ</span></div>
+        </div>
+      </div>
+      <div class="tt-item tt-pre anim" style="transition-delay:0.28s">
+        <p class="tt-time">16:30</p>
+        <div class="tt-body">
+          <div class="tt-name">閉会</div>
+        </div>
+      </div>
+      <div class="tt-item anim" style="transition-delay:0.32s">
+        <p class="tt-time">17:00 – 19:00</p>
+        <div class="tt-body">
+          <div class="tt-name">打ち上げ</div>
+          <div class="tt-desc">事前に募集した参加者のみ / 参加費 2,000円程度</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== INFO ====== -->
+<section id="anchor-info" class="section-eventinfo sec-alt">
+  <div class="sec-title anim">
+    <div class="en font-bg">INFO</div>
+    <span class="jp">開催情報</span>
+  </div>
+  <div class="section-contents">
+    <ul class="event-list">
+      <li class="event-item anim">
+        <p class="name">日時</p>
+        <div class="detail">2026年3月29日（日）13:00〜16:30<br>（受付 12:00〜）</div>
+      </li>
+      <li class="event-item anim" style="transition-delay:0.1s">
+        <p class="name">会場</p>
+        <div class="detail">東京理科大学 神楽坂キャンパス 2号館<br>（JR飯田橋駅 徒歩5分）</div>
+      </li>
+      <li class="event-item anim" style="transition-delay:0.2s">
+        <p class="name">参加条件</p>
+        <div class="detail">現役大学生・大学院生（OB不可）<br>見学のみの参加も可能</div>
+      </li>
+      <li class="event-item anim" style="transition-delay:0.3s">
+        <p class="name">立食パーティー</p>
+        <div class="detail">17:00〜19:00（事前募集制）<br>参加費：2,000円程度（当日徴収）</div>
+      </li>
+      <li class="event-item anim" style="transition-delay:0.4s">
+        <p class="name">オンライン配信</p>
+        <div class="detail">YouTube Liveで上映・プレゼンを配信<br>コメント・質疑応答はSlidoを使用しました</div>
+      </li>
+    </ul>
+
+    <div class="cta-section anim">
+      <p style="font-size:14px;color:#999;line-height:1.7;margin-bottom:18px">第一回の参加受付は終了しました。<br>第二回の情報は公式Xでお知らせします。</p>
+      <a href="https://x.com/tus_douken" target="_blank" rel="noopener" class="grad-btn"><svg style="width:16px;height:16px;fill:currentColor;position:relative;z-index:1"><use href="#icon-x"/></svg><span>@tus_douken をフォロー</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ACCESS ====== -->
+<section id="anchor-access" class="section-access">
+  <div class="sec-title anim">
+    <div class="en font-bg">ACCESS</div>
+    <span class="jp">会場アクセス</span>
+  </div>
+  <div class="section-contents">
+    <div class="access-info">
+      <div class="access-map anim">
+        <iframe src="https://maps.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E7%90%86%E7%A7%91%E5%A4%A7%E5%AD%A6%E7%A5%9E%E6%A5%BD%E5%9D%82%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B92%E5%8F%B7%E9%A4%A8&t=&z=17&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="access-detail anim" style="transition-delay:0.1s">
+        <strong>東京理科大学 神楽坂キャンパス 2号館</strong><br>
+        〒162-8601 東京都新宿区神楽坂1-3<br><br>
+        <span class="station">JR総武線 飯田橋駅 西口 徒歩5分</span><br>
+        <span class="station">東京メトロ・都営地下鉄 飯田橋駅 B3出口 徒歩5分</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SCHEDULE ====== -->
+<section id="anchor-schedule" class="section-schedule sec-alt">
+  <div class="sec-title anim">
+    <div class="en font-bg">SCHEDULE</div>
+    <span class="jp">第一回のあゆみ</span>
+  </div>
+  <div class="section-contents">
+    <div class="tl-scroll">
+    <div class="tl">
+      <div class="tl-item done anim" style="transition-delay:0.2s">
+        <span class="tl-date font-bg">— 1/18</span>
+        <span class="tl-label">事前アンケート</span>
+        <span class="tl-badge tl-badge-end font-bg">END</span>
+      </div>
+      <div class="tl-item done anim" style="transition-delay:0.35s">
+        <span class="tl-date font-bg">2/1 — 2/28</span>
+        <span class="tl-label">参加申し込み</span>
+        <span class="tl-badge tl-badge-end font-bg">END</span>
+      </div>
+      <div class="tl-item done anim" style="transition-delay:0.5s">
+        <span class="tl-date font-bg">2/15</span>
+        <span class="tl-label">質問会</span>
+        <span class="tl-badge tl-badge-end font-bg">END</span>
+      </div>
+      <div class="tl-item done anim" style="transition-delay:0.65s">
+        <span class="tl-date font-bg">3/7</span>
+        <span class="tl-label">サークルカット締切</span>
+        <span class="tl-badge tl-badge-end font-bg">END</span>
+      </div>
+      <div class="tl-item done anim" style="transition-delay:0.8s">
+        <span class="tl-date font-bg">3/24</span>
+        <span class="tl-label">データ締切</span>
+        <span class="tl-badge tl-badge-end font-bg">END</span>
+      </div>
+      <div class="tl-item done anim" style="transition-delay:0.95s">
+        <span class="tl-date font-bg">3/25</span>
+        <span class="tl-label">パンフレット配布</span>
+        <span class="tl-badge tl-badge-end font-bg">END</span>
+      </div>
+      <div class="tl-item highlight anim" style="transition-delay:1.1s">
+        <span class="tl-date font-bg">3/29</span>
+        <span class="tl-label">交流会本番</span>
+        <span class="tl-badge tl-badge-end font-bg">END</span>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== REPORT ====== -->
+<section id="anchor-report" class="section-report">
+  <div class="sec-title anim">
+    <div class="en font-bg">REPORT</div>
+    <span class="jp">開催レポート</span>
+  </div>
+  <div class="section-contents">
+    <div class="report-box anim">
+      <div class="report-icon">📝</div>
+      <div class="report-title">準備中</div>
+      <div class="report-desc">第一回の開催レポートを準備しています。<br>公開までもう少しお待ちください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== Q&A ====== -->
+<section id="anchor-qanda" class="section-qanda">
+  <div class="sec-title anim">
+    <div class="en font-bg">Q&A</div>
+    <span class="jp">よくある質問（第一回開催時）</span>
+  </div>
+  <div class="section-contents">
+    <p class="anim" style="text-align:center;font-size:13px;color:#999;line-height:1.7;margin-bottom:30px">以下は第一回開催時にいただいた質問です。<br>第二回の内容は決まり次第あらためてお知らせします。</p>
+    <div class="qanda-list">
+      <div class="qanda-item anim">
+        <div class="question">参加費はかかりますか？</div>
+        <div class="answer">イベント本編は無料でした。立食パーティーのみ実費（2,000円程度）を当日徴収しました。</div>
+      </div>
+      <div class="qanda-item anim">
+        <div class="question">個人（サークル無所属）での参加は可能ですか？</div>
+        <div class="answer">大学生でアニメ制作に携わっている方なら参加可能です。見学としてなら、これから制作を始めたい方も歓迎します。</div>
+      </div>
+      <div class="qanda-item anim">
+        <div class="question">オンライン参加で可能なことは？</div>
+        <div class="answer">YouTube配信による作品上映の視聴、プレゼン登壇（動画提出推奨）、Slidoでのコメント・質疑応答に参加できます。ブース展示の体験はできません。</div>
+      </div>
+      <div class="qanda-item anim">
+        <div class="question">1サークルあたりの人数制限はありますか？</div>
+        <div class="answer">原則ありませんが、会場の都合上1サークル10名程度を目安にご協力をお願いする場合があります。</div>
+      </div>
+      <div class="qanda-item anim">
+        <div class="question">上映作品の尺に制限はありますか？</div>
+        <div class="answer">各サークルの持ち時間は最大15分です。超える場合は抜粋版等のご用意をお願いします。</div>
+      </div>
+    </div>
+    <div class="qa-more anim">
+      <a href="qa.html" class="grad-btn"><span>すべてのQ&Aを見る</span><span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== CIRCLES ====== -->
+<section id="anchor-circles" class="section-circles sec-alt">
+  <div class="sec-title anim">
+    <div class="en font-bg">CIRCLES</div>
+    <span class="jp">第一回の参加団体</span>
+  </div>
+  <div class="section-contents">
+    <div class="circles-grid">
+      <div class="circle-card anim">
+        <img src="../douken-logo.png" alt="東京理科大学 動画研究同好会" class="circle-logo">
+        <div class="univ">東京理科大学</div>
+        <div class="cname">動画研究同好会</div>
+        <div class="circle-links">
+          <a href="http://rikadaidouken.custard.jp/" target="_blank" rel="noopener" title="HP"><svg><use href="#icon-globe"/></svg></a>
+          <a href="https://x.com/tus_douken" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+          <a href="https://www.instagram.com/tus.douken" target="_blank" rel="noopener" title="Instagram"><svg><use href="#icon-ig"/></svg></a>
+          <a href="https://www.youtube.com/@rikadai-douken" target="_blank" rel="noopener" title="YouTube"><svg><use href="#icon-yt"/></svg></a>
+        </div>
+      </div>
+      <div class="circle-card anim" style="transition-delay:0.1s">
+        <img src="../aniway-logo.jpg" alt="デジタルハリウッド大学 AniWay" class="circle-logo">
+        <div class="univ">デジタルハリウッド大学</div>
+        <div class="cname">AniWay</div>
+        <div class="circle-links">
+          <a href="https://www.dhw.ac.jp/life/club/aniway/" target="_blank" rel="noopener" title="HP"><svg><use href="#icon-globe"/></svg></a>
+          <a href="https://x.com/AniWayDHU" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+          <a href="https://www.instagram.com/aniwaydhu" target="_blank" rel="noopener" title="Instagram"><svg><use href="#icon-ig"/></svg></a>
+          <a href="https://www.youtube.com/channel/UC_8BwDKh0N9E9R4DorRngjw" target="_blank" rel="noopener" title="YouTube"><svg><use href="#icon-yt"/></svg></a>
+        </div>
+      </div>
+      <div class="circle-card anim" style="transition-delay:0.3s">
+        <img src="../kagakudai-logo.jpg" alt="東京科学大学 アニメーション研究会" class="circle-logo">
+        <div class="univ">東京科学大学</div>
+        <div class="cname">アニメーション研究会</div>
+        <div class="circle-links">
+          <a href="http://titans-animeken.com/" target="_blank" rel="noopener" title="HP"><svg><use href="#icon-globe"/></svg></a>
+          <a href="https://x.com/titech_animeken" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+          <a href="https://www.youtube.com/@%E6%9D%B1%E5%B7%A5%E7%A0%94%E5%A4%AA%E9%83%8E" target="_blank" rel="noopener" title="YouTube"><svg><use href="#icon-yt"/></svg></a>
+        </div>
+      </div>
+      <div class="circle-card anim" style="transition-delay:0.4s">
+        <img src="../cual-logo.jpg" alt="千葉大学 CUAL" class="circle-logo">
+        <div class="univ">千葉大学</div>
+        <div class="cname">アニメーション研究会CUAL</div>
+        <div class="circle-links">
+          <a href="https://cual.sakura.ne.jp/" target="_blank" rel="noopener" title="HP"><svg><use href="#icon-globe"/></svg></a>
+          <a href="https://x.com/cual_animeken" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+          <a href="https://www.youtube.com/@-cual-" target="_blank" rel="noopener" title="YouTube"><svg><use href="#icon-yt"/></svg></a>
+        </div>
+      </div>
+      <div class="circle-card anim" style="transition-delay:0.5s">
+        <img src="../animezemi-logo.png" alt="東京大学 アニメ研究ゼミ" class="circle-logo">
+        <div class="univ">東京大学</div>
+        <div class="cname">アニメ研究ゼミ</div>
+        <div class="circle-links">
+          <a href="https://animetodai-hash.github.io/zemi_studio/" target="_blank" rel="noopener" title="HP"><svg><use href="#icon-globe"/></svg></a>
+          <a href="https://x.com/AnimeZemi" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+        </div>
+      </div>
+      <div class="circle-card anim" style="transition-delay:0.6s">
+        <img src="../taf-logo.jpg" alt="東洋大学 アニメーションファクトリー" class="circle-logo">
+        <div class="univ">東洋大学</div>
+        <div class="cname">アニメーションファクトリー</div>
+        <div class="circle-links">
+          <a href="http://anifac.web.fc2.com/" target="_blank" rel="noopener" title="HP"><svg><use href="#icon-globe"/></svg></a>
+          <a href="https://x.com/toyoanifac" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+        </div>
+      </div>
+      <div class="circle-card anim" style="transition-delay:0.4s">
+        <img src="../kvc-logo.jpg" alt="國學院大學 アニメーション研究会" class="circle-logo">
+        <div class="univ">國學院大學</div>
+        <div class="cname">アニメーション研究会</div>
+        <div class="circle-links">
+          <a href="https://x.com/kokugakuinanime" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+          <a href="https://www.youtube.com/@KokugakuinVisualCreate" target="_blank" rel="noopener" title="YouTube"><svg><use href="#icon-yt"/></svg></a>
+        </div>
+      </div>
+      <div class="circle-card anim" style="transition-delay:0.5s">
+        <img src="../wafl-logo.jpg" alt="早稲田大学 アニメーション研究会" class="circle-logo">
+        <div class="univ">早稲田大学</div>
+        <div class="cname">アニメーション研究会</div>
+        <div class="circle-links">
+          <a href="https://wafl.jp/" target="_blank" rel="noopener" title="HP"><svg><use href="#icon-globe"/></svg></a>
+          <a href="https://x.com/waseda_wafl" target="_blank" rel="noopener" title="X"><svg><use href="#icon-x"/></svg></a>
+          <a href="https://www.youtube.com/channel/UChkjjta6mRLYxOD7AkKPcPg" target="_blank" rel="noopener" title="YouTube"><svg><use href="#icon-yt"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <p class="circles-note anim">第一回にご参加いただいた団体のみなさま</p>
+  </div>
+</section>
+
+<!-- ====== SPONSOR ====== -->
+<section id="anchor-sponsor" class="section-sponsor">
+  <div class="sec-title anim">
+    <div class="en font-bg">SPONSOR</div>
+    <span class="jp">スポンサー</span>
+  </div>
+  <div class="section-contents">
+    <div class="sponsor-area anim">
+      <div class="sponsor-label font-bg">第一回 SUPPORTED BY</div>
+      <div class="sponsor-list">
+        <div style="text-align:center">
+          <a href="https://www.shippo.co.jp/" target="_blank" rel="noopener" class="sponsor-item"><img src="../neko-logo.gif" alt="ねこのしっぽ" style="height:60px;width:auto"></a>
+          <p style="margin-top:8px;font-size:14px;font-weight:900;color:#333">ねこのしっぽ</p>
+          <p style="margin-top:4px;font-size:12px;color:#999;line-height:1.6">印刷協力</p>
+        </div>
+        <div style="text-align:center">
+          <a href="https://tooniq.co.jp" target="_blank" rel="noopener" class="sponsor-item"><img src="../tooniq-logo.png" alt="TOONIQ"></a>
+          <p style="margin-top:8px;font-size:14px;font-weight:900;color:#333">合同会社TOONIQ</p>
+          <p style="margin-top:4px;font-size:12px;color:#999;line-height:1.6">WEBサイト作成 / 技術支援</p>
+        </div>
+        <div style="text-align:center">
+          <a href="https://www.clipstudio.net/" target="_blank" rel="noopener" class="sponsor-item"><img src="../csp_main_logo_black.png" alt="クリスタ"></a>
+          <p style="margin-top:8px;font-size:14px;font-weight:900;color:#333">CLIP STUDIO PAINT</p>
+          <p style="margin-top:4px;font-size:12px;color:#999;line-height:1.6">製品協賛</p>
+        </div>
+      </div>
+    </div>
+    <div class="sponsor-recruit anim">
+      <p>第二回のスポンサーを募集しています。<br>ご興味のある企業・団体様はお気軽にお問い合わせください。</p>
+      <a href="mailto:tus_douken@googlegroups.com?subject=%E3%80%90%E5%A4%A7%E5%AD%A6%E3%82%A2%E3%83%8B%E7%A0%94%E4%BA%A4%E6%B5%81%E4%BC%9A%E3%80%91%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B5%E3%83%BC%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B" class="grad-btn"><span>スポンサーのお問い合わせ</span><span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== NEXT ====== -->
+<section id="anchor-next" class="section-next sec-alt">
+  <div class="sec-title anim">
+    <div class="en font-bg">NEXT</div>
+    <span class="jp">第二回に向けて</span>
+  </div>
+  <div class="section-contents">
+    <div class="next-box anim">
+      <p class="next-lead">第一回は終わり、<br><span class="accent">第二回</span>の準備が始まっています。</p>
+      <p class="next-desc">日程・会場はまだ決まっていません。<br>最新の状況は第二回のページでお知らせします。</p>
+      <div class="next-actions">
+        <a href="../" class="grad-btn"><span>第二回のページを見る</span><span class="arrow">→</span></a>
+        <a href="https://x.com/tus_douken" target="_blank" rel="noopener" class="grad-btn"><svg><use href="#icon-x"/></svg><span>@tus_douken</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="anchor-contact" class="section-contact">
+  <div class="sec-title anim">
+    <div class="en font-bg">CONTACT</div>
+    <span class="jp">お問い合わせ</span>
+  </div>
+  <div class="section-contents">
+    <div class="contact-inner anim">
+      <p><strong>東京理科大学 動画研究同好会</strong></p>
+      <p>代表 坂井 優仁</p>
+      <p>副代表 濱中 勇波</p>
+      <p style="font-size:13px;color:#999;margin-top:4px;line-height:1.5">〒162-8601 東京都新宿区神楽坂1丁目3<br>6号館横部室棟14号室</p>
+      <div class="contact-links">
+        <a href="mailto:tus_douken@googlegroups.com" class="grad-btn"><svg><use href="#icon-mail"/></svg><span>Mail</span></a>
+        <a href="https://x.com/tus_douken" target="_blank" rel="noopener" class="grad-btn"><svg><use href="#icon-x"/></svg><span>@tus_douken</span></a>
+      </div>
+    </div>
+    <div class="anim" style="margin-top:32px;text-align:center">
+      <p style="font-size:13px;color:#999;margin-bottom:6px">公式ハッシュタグ</p>
+      <a href="https://x.com/search?q=%23%E5%A4%A7%E5%AD%A6%E3%82%A2%E3%83%8B%E7%A0%94%E4%BA%A4%E6%B5%81%E4%BC%9A" target="_blank" rel="noopener" class="grad-btn"><svg style="width:16px;height:16px;fill:currentColor;position:relative;z-index:1"><use href="#icon-x"/></svg><span>#大学アニ研交流会</span></a>
+    </div>
+  </div>
+</section>
+
+
+<div class="footer-bottom">
+  &copy; 2026 東京理科大学 動画研究同好会<br>
+  <span class="footer-credit">Site by <a href="https://tooniq.co.jp" target="_blank" rel="noopener">TOONIQ LLC</a></span>
+</div>
+
+<script>
+// ====== Smooth scroll ======
+document.querySelectorAll('.scroll').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href');
+    if (id === '#') { window.scrollTo({top:0,behavior:'smooth'}); }
+    else {
+      const t = document.querySelector(id);
+      if (t) window.scrollTo({top:t.offsetTop - 20, behavior:'smooth'});
+    }
+    document.querySelector('nav').classList.remove('open');
+    document.querySelector('.menu-button').classList.remove('open');
+  });
+});
+
+// ====== Scroll-triggered animations ======
+const io = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animed');
+      io.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.15});
+
+document.querySelectorAll('.anim').forEach(el => io.observe(el));
+
+// ====== Timeline line draw ======
+const tlObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('tl-drawn');
+      tlObs.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.2});
+document.querySelectorAll('.tl').forEach(el => tlObs.observe(el));
+
+// ====== FV entry animation ======
+window.addEventListener('DOMContentLoaded', () => {
+  const fvContent = document.querySelector('.fv-content');
+  if (fvContent) {
+    setTimeout(() => fvContent.classList.add('loaded'), 200);
+  }
+});
+</script>
+
+</body>
+</html>
